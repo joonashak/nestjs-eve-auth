@@ -1,1 +1,1 @@
-export const getHello=()=>'Hello from new package.'
+export const getHello = () => "Hello from new package.";
