@@ -1,0 +1,16 @@
+services:
+  mongo:
+    image: mongo:5.0-focal
+    restart: unless-stopped
+    container_name: nestjs-eve-sso-mongo
+    volumes:
+      - type: volume
+        source: nestjs-eve-sso-mongo-data
+        target: /data/db
+        volume:
+          nocopy: true
+    ports:
+      - 27017:27017
+
+volumes:
+  nestjs-eve-sso-mongo-data:
