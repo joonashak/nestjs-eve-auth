@@ -1,6 +1,7 @@
 import { NestFactory } from "@nestjs/core";
+import MongoStore from "connect-mongo";
 import "dotenv/config";
-import * as session from "express-session";
+import session from "express-session";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
@@ -11,6 +12,9 @@ async function bootstrap() {
       secret: "my-secret",
       resave: false,
       saveUninitialized: false,
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URL,
+      }),
     }),
   );
 

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "NestJS package to support EVE SSO authentication flow",
   "scripts": {
-    "start": "docker compose up -d",
+    "start": "docker compose up -d && cd dev && npm run start:dev",
     "stop": "docker compose down",
     "lint": "npm run lint:dev && npm run lint:lib",
     "lint:dev": "cd dev && npm run lint",
