@@ -6,8 +6,13 @@ import {
   EveAuthModuleOptions,
 } from "../eve-auth.module-definition";
 
+export const OAUTH_STRATEGY_TOKEN = "eve-oauth";
+
 @Injectable()
-export class OAuthStrategy extends PassportStrategy(Strategy) {
+export class OAuthStrategy extends PassportStrategy(
+  Strategy,
+  OAUTH_STRATEGY_TOKEN,
+) {
   constructor(
     @Inject(EVE_AUTH_MODULE_OPTIONS_TOKEN) options: EveAuthModuleOptions,
   ) {

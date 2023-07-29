@@ -22,6 +22,13 @@ export interface EveAuthModuleOptions {
    */
   global?: boolean;
   /**
+   * Login route path.
+   *
+   * Making a `GET` request to this path starts the SSO login flow. Defaults to
+   * `/login`.
+   */
+  loginPath?: string;
+  /**
    * EVE SSO Authorization URL.
    *
    * It is not necessary to set this in normal use. This option is provided for
@@ -45,6 +52,7 @@ export const {
   .setExtras(
     {
       global: true,
+      loginPath: configuration.sso.loginPath,
       authorizationUrl: configuration.sso.authorizationUrl,
       tokenUrl: configuration.sso.tokenUrl,
     },
