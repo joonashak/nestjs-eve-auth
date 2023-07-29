@@ -27,7 +27,7 @@
     "connect-mongo": "^5.0.0",
     "dotenv": "^16.3.1",
     "express-session": "^1.17.3",
-    "nestjs-eve-sso": "file:../lib",
+    "nestjs-eve-auth": "file:../lib",
     "passport-oauth2": "^1.7.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
