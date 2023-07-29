@@ -14,7 +14,9 @@ export interface EveAuthModuleOptions {
    * Your app's EVE SSO Callback URL.
    *
    * This MUST match what you have entered in your app's EVE SSO configuration
-   * or the authentication will fail.
+   * or the authentication will fail. The correct value should be your server
+   * address appended with `/sso/callback`. E.g., when developing locally, this
+   * could be `http://localhost:3000/sso/callback`.
    */
   callbackUrl: string;
   /**
