@@ -1,4 +1,5 @@
 import { ConfigurableModuleBuilder } from "@nestjs/common";
+import configuration from "./configuration";
 
 export interface EveAuthModuleOptions {
   /**
@@ -20,6 +21,20 @@ export interface EveAuthModuleOptions {
    * Register `EveAuthModule` as global module.
    */
   global?: boolean;
+  /**
+   * EVE SSO Authorization URL.
+   *
+   * It is not necessary to set this in normal use. This option is provided for
+   * redundancy.
+   */
+  authorizationUrl?: string;
+  /**
+   * EVE SSO Token URL.
+   *
+   * It is not necessary to set this in normal use. This option is provided for
+   * redundancy.
+   */
+  tokenUrl?: string;
 }
 
 export const {
@@ -30,10 +45,22 @@ export const {
   .setExtras(
     {
       global: true,
+      authorizationUrl: configuration.sso.authorizationUrl,
+      tokenUrl: configuration.sso.tokenUrl,
     },
-    (definition, extras) => ({
-      ...definition,
-      global: extras.global,
-    }),
+    (definition, extras) => {
+      // Set options default values.
+      // This is hacky but ConfigurableModuleBuilder does not provide a way to do this properly.
+      try {
+        definition.providers[0]["useValue"] = extras;
+      } catch {
+        throw new Error("Could not set `EveAuthModuleOptions` default values.");
+      }
+
+      return {
+        ...definition,
+        global: extras.global,
+      };
+    },
   )
   .build();
