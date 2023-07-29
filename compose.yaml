@@ -2,10 +2,10 @@ services:
   mongo:
     image: mongo:5.0-focal
     restart: unless-stopped
-    container_name: nestjs-eve-sso-mongo
+    container_name: nestjs-eve-auth-mongo
     volumes:
       - type: volume
-        source: nestjs-eve-sso-mongo-data
+        source: nestjs-eve-auth-mongo-data
         target: /data/db
         volume:
           nocopy: true
@@ -13,4 +13,4 @@ services:
       - 27017:27017
 
 volumes:
-  nestjs-eve-sso-mongo-data:
+  nestjs-eve-auth-mongo-data:

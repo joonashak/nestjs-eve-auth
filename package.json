@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-eve-sso",
+  "name": "nestjs-eve-auth",
   "version": "0.0.1",
   "description": "NestJS package to support EVE SSO authentication flow",
   "scripts": {
