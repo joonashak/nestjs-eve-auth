@@ -1,5 +1,15 @@
-import { Controller, Get, Query, Session, UseGuards } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  Query,
+  Session,
+  UseFilters,
+  UseGuards,
+  UsePipes,
+  ValidationPipe,
+} from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
+import { HttpExceptionFilter } from "../common/filters/http-exception.filter";
 import configuration from "../configuration";
 import { ExpressSession } from "../utils/express-session";
 import { CallbackParams } from "./dto/callback-params.dto";
@@ -14,6 +24,8 @@ export class SsoController {
   @Get(configuration.sso.loginPath)
   login() {}
 
+  @UsePipes(ValidationPipe)
+  @UseFilters(HttpExceptionFilter)
   @Get(configuration.sso.callbackPath)
   callback(
     @Query() callbackParams: CallbackParams,
