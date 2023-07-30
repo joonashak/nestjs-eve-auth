@@ -1,10 +1,11 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Inject, Injectable } from "@nestjs/common";
 import axios from "axios";
 import * as FormData from "form-data";
 import {
   EVE_AUTH_MODULE_OPTIONS_TOKEN,
   EveAuthModuleOptions,
 } from "../eve-auth.module-definition";
+import { ExpressSession } from "../utils/express-session";
 import { CallbackParams } from "./dto/callback-params.dto";
 import { SsoTokens } from "./dto/sso-tokens.dto";
 
@@ -15,8 +16,24 @@ export class SsoService {
     private options: EveAuthModuleOptions,
   ) {}
 
-  async callback({ code, state }: CallbackParams): Promise<SsoTokens> {
+  async callback(
+    { code, state }: CallbackParams,
+    session: ExpressSession,
+  ): Promise<SsoTokens> {
+    // FIXME: Access session state safely.
+    const sessionState = session["oauth2:login.eveonline.com"].state;
+    this.verifyState(state, sessionState);
     return this.getTokens(code);
+  }
+
+  private verifyState(callbackState: string, sessionState: string): boolean {
+    if (callbackState !== sessionState) {
+      throw new HttpException(
+        "SSO states do not match.",
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    return true;
   }
 
   private async getTokens(code: string): Promise<SsoTokens> {

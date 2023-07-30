@@ -1,6 +1,8 @@
-import { Controller, Get, Query, UseGuards } from "@nestjs/common";
+import { Controller, Get, Query, Session, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import configuration from "../configuration";
+import { ExpressSession } from "../utils/express-session";
+import { CallbackParams } from "./dto/callback-params.dto";
 import { OAUTH_STRATEGY_TOKEN } from "./oauth.strategy";
 import { SsoService } from "./sso.service";
 
@@ -13,8 +15,10 @@ export class SsoController {
   login() {}
 
   @Get(configuration.sso.callbackPath)
-  callback(@Query("code") code: string, @Query("state") state: string) {
-    // TODO: Verify state.
-    return this.ssoService.callback({ code, state });
+  callback(
+    @Query() callbackParams: CallbackParams,
+    @Session() session: ExpressSession,
+  ) {
+    return this.ssoService.callback(callbackParams, session);
   }
 }
