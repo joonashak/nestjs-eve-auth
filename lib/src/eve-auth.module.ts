@@ -11,7 +11,6 @@ import { SsoModule } from "./sso/sso.module";
 })
 export class EveAuthModule {
   static forRootAsync(opt: EveAuthModuleAsyncOptions): DynamicModule {
-    console.log("forRootAsync", opt);
     const config = {
       authorizationUrl: configuration.sso.authorizationUrl,
       tokenUrl: configuration.sso.tokenUrl,
@@ -23,7 +22,6 @@ export class EveAuthModule {
       providers: [
         {
           provide: EVE_AUTH_MODULE_OPTIONS_TOKEN,
-          // useFactory: async (...args: any[]) => await opt.useFactory(...args),
           // FIXME: Make a config module that exports the return type
           // of this function (e.g. EveAuthConfig) and offers a nice service
           // to avoid using the options injection token all the time.
