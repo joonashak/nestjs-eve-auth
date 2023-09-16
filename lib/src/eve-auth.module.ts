@@ -1,4 +1,5 @@
 import { DynamicModule, Global, Module } from "@nestjs/common";
+import configuration from "./configuration";
 import { EVE_AUTH_MODULE_OPTIONS_TOKEN } from "./constants";
 import { SsoModule } from "./sso/sso.module";
 
@@ -8,39 +9,11 @@ import { SsoModule } from "./sso/sso.module";
   exports: [EVE_AUTH_MODULE_OPTIONS_TOKEN],
 })
 export class EveAuthModule {
-  static forRoot(opt: any): DynamicModule {
-    console.log(opt);
-
-    const oldOptions = {
-      clientId: "asd",
-      secretKey: "",
-      callbackUrl: "",
-      global: false,
-      authorizationUrl: "asd",
-      tokenUrl: "asd",
-    };
-
-    return {
-      module: EveAuthModule,
-      providers: [
-        {
-          provide: EVE_AUTH_MODULE_OPTIONS_TOKEN,
-          useValue: oldOptions,
-        },
-      ],
-    };
-  }
-
   static forRootAsync(opt: any): DynamicModule {
-    console.log(opt);
-
-    const oldOptions = {
-      clientId: "asd",
-      secretKey: "",
-      callbackUrl: "",
-      global: false,
-      authorizationUrl: "asd",
-      tokenUrl: "asd",
+    console.log("forRootAsync", opt);
+    const config = {
+      authorizationUrl: configuration.sso.authorizationUrl,
+      tokenUrl: configuration.sso.tokenUrl,
     };
 
     return {
@@ -49,7 +22,11 @@ export class EveAuthModule {
       providers: [
         {
           provide: EVE_AUTH_MODULE_OPTIONS_TOKEN,
-          useFactory: async (...args: any[]) => await opt.useFactory(...args),
+          // useFactory: async (...args: any[]) => await opt.useFactory(...args),
+          useFactory: async (...args: any[]) => {
+            const options = await opt.useFactory(...args);
+            return { ...config, ...options };
+          },
           inject: opt.inject || [],
         },
       ],

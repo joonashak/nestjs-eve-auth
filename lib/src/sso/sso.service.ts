@@ -11,7 +11,10 @@ export class SsoService {
   constructor(
     @Inject(EVE_AUTH_MODULE_OPTIONS_TOKEN)
     private options: any,
-  ) {}
+  ) {
+    console.log("ssoservice", options);
+    options.userService.create();
+  }
 
   async callback(
     { code, state }: CallbackParams,
