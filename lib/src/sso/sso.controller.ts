@@ -21,6 +21,7 @@ export class SsoController {
   constructor(private ssoService: SsoService) {}
 
   @UseGuards(AuthGuard(OAUTH_STRATEGY_TOKEN))
+  // FIXME: Move this under configuration. See https://github.com/nestjs/nest/issues/1438#issuecomment-872012841
   @Get(configuration.sso.loginPath)
   login() {}
 
