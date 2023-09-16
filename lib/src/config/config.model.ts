@@ -19,11 +19,4 @@ export class Config {
 
   @IsUrl()
   tokenUrl = "https://login.eveonline.com/v2/oauth/token";
-
-  // FIXME: Implement these. See https://github.com/nestjs/nest/issues/1438#issuecomment-872012841
-  // @IsNotEmpty()
-  // loginPath = "/sso/login";
-
-  // @IsNotEmpty()
-  // callbackPath = "/sso/callback";
 }
