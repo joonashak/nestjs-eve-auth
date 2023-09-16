@@ -1,19 +1,14 @@
-import { HttpException, HttpStatus, Inject, Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import axios from "axios";
 import * as FormData from "form-data";
 import { ConfigService } from "../config/config.service";
-import { EVE_AUTH_MODULE_OPTIONS_TOKEN } from "../constants";
 import { ExpressSession } from "../utils/express-session";
 import { CallbackParams } from "./dto/callback-params.dto";
 import { SsoTokens } from "./dto/sso-tokens.dto";
 
 @Injectable()
 export class SsoService {
-  constructor(
-    @Inject(EVE_AUTH_MODULE_OPTIONS_TOKEN)
-    private options: any,
-    private configService: ConfigService,
-  ) {
+  constructor(private configService: ConfigService) {
     console.log("ssoservice", configService.config);
     // TODO: Create another service to inject consumer services.
     // configService.config.userService.create();
@@ -44,7 +39,7 @@ export class SsoService {
     formData.append("grant_type", "authorization_code");
     formData.append("code", code);
 
-    const { clientId, secretKey, tokenUrl } = this.options;
+    const { clientId, secretKey, tokenUrl } = this.configService.config;
 
     const auth = {
       username: clientId,
