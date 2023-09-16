@@ -1,10 +1,7 @@
 import { HttpException, HttpStatus, Inject, Injectable } from "@nestjs/common";
 import axios from "axios";
 import * as FormData from "form-data";
-import {
-  EVE_AUTH_MODULE_OPTIONS_TOKEN,
-  EveAuthModuleOptions,
-} from "../eve-auth.module-definition";
+import { EVE_AUTH_MODULE_OPTIONS_TOKEN } from "../constants";
 import { ExpressSession } from "../utils/express-session";
 import { CallbackParams } from "./dto/callback-params.dto";
 import { SsoTokens } from "./dto/sso-tokens.dto";
@@ -13,7 +10,7 @@ import { SsoTokens } from "./dto/sso-tokens.dto";
 export class SsoService {
   constructor(
     @Inject(EVE_AUTH_MODULE_OPTIONS_TOKEN)
-    private options: EveAuthModuleOptions,
+    private options: any,
   ) {}
 
   async callback(
