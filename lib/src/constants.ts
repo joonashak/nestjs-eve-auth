@@ -1,1 +1,2 @@
 export const EVE_AUTH_MODULE_OPTIONS_TOKEN = "EVE_AUTH_MODULE_OPTIONS";
+export const EVE_AUTH_SESSION_ESI_ID_KEY = "loggedInEsiId";

@@ -8,6 +8,7 @@ import axios from "axios";
 import * as FormData from "form-data";
 import { ConfigService } from "../config/config.service";
 import { Consumer } from "../config/consumer.service";
+import { EVE_AUTH_SESSION_ESI_ID_KEY } from "../constants";
 import { ExpressSession } from "../utils/express-session";
 import { CallbackParams } from "./dto/callback-params.dto";
 import { EveSsoVerifyTokenResponse } from "./dto/eve-sso-verify-token-response.dto";
@@ -41,6 +42,8 @@ export class SsoService {
         name: loginData.CharacterName,
       },
     });
+
+    session[EVE_AUTH_SESSION_ESI_ID_KEY] = loginData.CharacterID;
   }
 
   private verifyState(callbackState: string, sessionState: string): boolean {
