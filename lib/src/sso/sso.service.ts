@@ -30,7 +30,17 @@ export class SsoService {
     const sessionState = session["oauth2:login.eveonline.com"].state;
     this.verifyState(state, sessionState);
     const tokens = await this.getTokens(code);
-    await this.verifyAndDecodeSsoAccessToken(tokens.accessToken);
+    const loginData = await this.verifyAndDecodeSsoAccessToken(
+      tokens.accessToken,
+    );
+
+    await this.consumer.service.ssoLogin({
+      tokens,
+      character: {
+        id: loginData.CharacterID,
+        name: loginData.CharacterName,
+      },
+    });
   }
 
   private verifyState(callbackState: string, sessionState: string): boolean {
