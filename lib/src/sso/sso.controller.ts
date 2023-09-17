@@ -2,6 +2,7 @@ import {
   Controller,
   Get,
   Query,
+  Res,
   Session,
   UseFilters,
   UseGuards,
@@ -9,7 +10,9 @@ import {
   ValidationPipe,
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
+import { Response } from "express";
 import { HttpExceptionFilter } from "../common/filters/http-exception.filter";
+import { ConfigService } from "../config/config.service";
 import { ExpressSession } from "../utils/express-session";
 import { CallbackParams } from "./dto/callback-params.dto";
 import { OAUTH_STRATEGY_TOKEN } from "./oauth.strategy";
@@ -28,19 +31,24 @@ import { SsoService } from "./sso.service";
  */
 @Controller("sso")
 export class SsoController {
-  constructor(private ssoService: SsoService) {}
+  constructor(
+    private ssoService: SsoService,
+    private configService: ConfigService,
+  ) {}
 
   @UseGuards(AuthGuard(OAUTH_STRATEGY_TOKEN))
   @Get("login")
-  login() {}
+  async login() {}
 
   @UsePipes(ValidationPipe)
   @UseFilters(HttpExceptionFilter)
   @Get("callback")
-  callback(
+  async callback(
     @Query() callbackParams: CallbackParams,
     @Session() session: ExpressSession,
+    @Res() response: Response,
   ) {
-    return this.ssoService.callback(callbackParams, session);
+    await this.ssoService.callback(callbackParams, session);
+    response.redirect(this.configService.config.afterLoginUrl);
   }
 }

@@ -20,6 +20,10 @@ export interface EveAuthModuleOptions {
    */
   callbackUrl: string;
   /**
+   * URL whereto client is redirected after successful SSO login.
+   */
+  afterLoginUrl: string;
+  /**
    * Service for integrating `nestjs-eve-auth` library with consumer application.
    */
   service: EveAuthConsumerService;

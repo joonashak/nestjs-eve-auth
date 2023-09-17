@@ -14,6 +14,9 @@ export class Config {
   @IsUrl({ require_tld: false })
   callbackUrl: string;
 
+  @IsUrl({ require_tld: false })
+  afterLoginUrl: string;
+
   @IsUrl()
   authorizationUrl = "https://login.eveonline.com/v2/oauth/authorize";
 

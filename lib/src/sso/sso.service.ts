@@ -25,13 +25,12 @@ export class SsoService {
   async callback(
     { code, state }: CallbackParams,
     session: ExpressSession,
-  ): Promise<SsoTokens> {
+  ): Promise<void> {
     // FIXME: Access session state safely.
     const sessionState = session["oauth2:login.eveonline.com"].state;
     this.verifyState(state, sessionState);
     const tokens = await this.getTokens(code);
     await this.verifyAndDecodeSsoAccessToken(tokens.accessToken);
-    return tokens;
   }
 
   private verifyState(callbackState: string, sessionState: string): boolean {
