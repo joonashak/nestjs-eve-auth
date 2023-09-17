@@ -1,4 +1,4 @@
-import { EveAuthUserService } from "./user-service.interface";
+import { EveAuthConsumerService } from "./eve-auth-consumer-service.interface";
 
 // Options that can be configured in forRootAsync's useFactory.
 export interface EveAuthModuleOptions {
@@ -19,7 +19,10 @@ export interface EveAuthModuleOptions {
    * could be `http://localhost:3000/sso/callback`.
    */
   callbackUrl: string;
-  userService: EveAuthUserService;
+  /**
+   * Service for integrating `nestjs-eve-auth` library with consumer application.
+   */
+  service: EveAuthConsumerService;
   /**
    * EVE SSO Authorization URL.
    *

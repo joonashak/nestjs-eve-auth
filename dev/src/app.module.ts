@@ -14,11 +14,11 @@ import { UserService } from "./user/user.service";
     //   global: true,
     // }),
     EveAuthModule.forRootAsync({
-      useFactory: async (userService: UserService) => ({
+      useFactory: async (consumerService: UserService) => ({
         clientId: process.env.CLIENT_ID,
         secretKey: process.env.SECRET_KEY,
         callbackUrl: "http://localhost:3000/sso/callback",
-        userService,
+        service: consumerService,
       }),
       inject: [UserService],
       imports: [UserModule],

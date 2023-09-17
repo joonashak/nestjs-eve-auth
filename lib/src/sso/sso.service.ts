@@ -17,9 +17,10 @@ import { SsoTokens } from "./dto/sso-tokens.dto";
 export class SsoService {
   private readonly logger = new Logger(SsoService.name);
 
-  constructor(private configService: ConfigService, consumer: Consumer) {
-    consumer.userService.create();
-  }
+  constructor(
+    private configService: ConfigService,
+    private consumer: Consumer,
+  ) {}
 
   async callback(
     { code, state }: CallbackParams,
