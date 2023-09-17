@@ -6,6 +6,11 @@ export type UserDocument = User & mongoose.Document;
 @Schema()
 export class User {
   @Prop()
+  esiId: number;
+
+  @Prop()
+  name: string;
+  @Prop()
   accessToken: string;
 
   @Prop()

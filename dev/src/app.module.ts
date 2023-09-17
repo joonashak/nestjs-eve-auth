@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
+import { MongooseModule } from "@nestjs/mongoose";
 import { EveAuthModule } from "nestjs-eve-auth";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
@@ -7,12 +8,7 @@ import { UserService } from "./user/user.service";
 
 @Module({
   imports: [
-    // EveAuthModule.forRoot({
-    //   clientId: process.env.CLIENT_ID,
-    //   secretKey: process.env.SECRET_KEY,
-    //   callbackUrl: "http://localhost:3000/sso/callback",
-    //   global: true,
-    // }),
+    MongooseModule.forRoot(process.env.MONGO_URL),
     EveAuthModule.forRootAsync({
       useFactory: async (consumerService: UserService) => ({
         clientId: process.env.CLIENT_ID,
