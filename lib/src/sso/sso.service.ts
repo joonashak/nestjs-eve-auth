@@ -2,16 +2,15 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import axios from "axios";
 import * as FormData from "form-data";
 import { ConfigService } from "../config/config.service";
+import { Consumer } from "../config/consumer.service";
 import { ExpressSession } from "../utils/express-session";
 import { CallbackParams } from "./dto/callback-params.dto";
 import { SsoTokens } from "./dto/sso-tokens.dto";
 
 @Injectable()
 export class SsoService {
-  constructor(private configService: ConfigService) {
-    console.log("ssoservice", configService.config);
-    // TODO: Create another service to inject consumer services.
-    // configService.config.userService.create();
+  constructor(private configService: ConfigService, consumer: Consumer) {
+    consumer.userService.create();
   }
 
   async callback(

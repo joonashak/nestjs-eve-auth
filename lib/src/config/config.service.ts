@@ -5,6 +5,7 @@ import {
   Logger,
 } from "@nestjs/common";
 import { validateSync } from "class-validator";
+import { omit } from "lodash";
 import { EVE_AUTH_MODULE_OPTIONS_TOKEN } from "../constants";
 import { EveAuthModule } from "../eve-auth.module";
 import { EveAuthModuleOptions } from "../interfaces/eve-auth-module-options.interface";
@@ -18,7 +19,8 @@ export class ConfigService {
   constructor(
     @Inject(EVE_AUTH_MODULE_OPTIONS_TOKEN) options: EveAuthModuleOptions,
   ) {
-    this.config = new Config(options);
+    const configOptions = omit(options, ["userService"]);
+    this.config = new Config(configOptions);
     const errors = validateSync(this.config);
 
     if (errors.length) {
