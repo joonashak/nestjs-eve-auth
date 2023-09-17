@@ -34,4 +34,11 @@ export interface EveAuthModuleOptions {
    * redundancy.
    */
   tokenUrl?: string;
+  /**
+   * EVE SSO Token Verification URL.
+   *
+   * It is not necessary to set this in normal use. This option is provided for
+   * redundancy.
+   */
+  verifyUrl?: string;
 }

@@ -19,4 +19,7 @@ export class Config {
 
   @IsUrl()
   tokenUrl = "https://login.eveonline.com/v2/oauth/token";
+
+  @IsUrl()
+  verifyUrl = "https://login.eveonline.com/oauth/verify";
 }
