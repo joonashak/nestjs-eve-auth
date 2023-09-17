@@ -10,7 +10,7 @@
     "lint:lib": "cd lib && npm run lint"
   },
   "author": "Joonas Häkkinen <joonashak@proton.me>",
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "devDependencies": {
     "@nestjs/cli": "^10.1.10"
   }

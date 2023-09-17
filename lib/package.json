@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "author": "Joonas Häkkinen <joonashak@proton.me>",
-  "license": "UNLICENSED",
+  "license": "GPL-3.0-only",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
