@@ -1,0 +1,18 @@
+name: Run tests on push
+
+on:
+  push:
+
+jobs:
+  test:
+    name: Run tests
+    uses: ./.github/workflows/run_tests.yaml
+
+  annotate:
+    name: Code comments
+    needs:
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: joonashak/comment-annotator@v1

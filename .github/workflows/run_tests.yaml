@@ -1,7 +1,6 @@
 name: Run tests
 
 on:
-  push:
   workflow_call:
 
 jobs:
@@ -36,10 +35,3 @@ jobs:
         run: npm ci
       - name: Run unit tests
         run: npm test
-
-  annotate:
-    name: Code comments
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: joonashak/comment-annotator@v1
