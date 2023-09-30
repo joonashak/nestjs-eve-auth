@@ -1,11 +1,13 @@
 {
   "name": "@joonashak/nestjs-eve-auth",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "author": "Joonas Häkkinen <joonashak@proton.me>",
   "license": "GPL-3.0-only",
   "main": "dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joonashak/nestjs-eve-auth.git"
