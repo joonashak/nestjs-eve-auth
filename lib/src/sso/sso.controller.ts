@@ -5,19 +5,17 @@ import {
   Res,
   Session,
   UseFilters,
-  UseGuards,
   UsePipes,
   ValidationPipe,
 } from "@nestjs/common";
-import { AuthGuard } from "@nestjs/passport";
 import { Response } from "express";
 import { HttpExceptionFilter } from "../common/filters/http-exception.filter";
 import { ConfigService } from "../config/config.service";
 import { ExpressSession } from "../utils/express-session";
 import { CallbackParams } from "./dto/callback-params.dto";
-import { OAUTH_STRATEGY_TOKEN } from "./oauth.strategy";
 import { SsoService } from "./sso.service";
 
+// FIXME: Remove this when implemented in nestjs-clone-bay.
 /**
  * Declare endpoints for SSO authentication requests.
  *
@@ -36,9 +34,9 @@ export class SsoController {
     private configService: ConfigService,
   ) {}
 
-  @UseGuards(AuthGuard(OAUTH_STRATEGY_TOKEN))
-  @Get("login")
-  async login() {}
+  // @UseGuards(AuthGuard(OAUTH_STRATEGY_TOKEN))
+  // @Get("login")
+  // async login() {}
 
   @UsePipes(ValidationPipe)
   @UseFilters(HttpExceptionFilter)

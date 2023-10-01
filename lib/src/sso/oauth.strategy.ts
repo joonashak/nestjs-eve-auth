@@ -2,8 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
 import { Strategy } from "passport-oauth2";
 import { ConfigService } from "../config/config.service";
-
-export const OAUTH_STRATEGY_TOKEN = "eve-oauth";
+import { OAUTH_STRATEGY_TOKEN } from "../constants";
 
 @Injectable()
 export class OAuthStrategy extends PassportStrategy(
