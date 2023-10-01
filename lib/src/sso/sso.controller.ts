@@ -12,7 +12,7 @@ import { Response } from "express";
 import { HttpExceptionFilter } from "../common/filters/http-exception.filter";
 import { ConfigService } from "../config/config.service";
 import { ExpressSession } from "../utils/express-session";
-import { CallbackParams } from "./dto/callback-params.dto";
+import { EveSsoCallbackParams } from "./dto/eve-sso-callback-params.dto";
 import { SsoService } from "./sso.service";
 
 // FIXME: Remove this when implemented in nestjs-clone-bay.
@@ -42,7 +42,7 @@ export class SsoController {
   @UseFilters(HttpExceptionFilter)
   @Get("callback")
   async callback(
-    @Query() callbackParams: CallbackParams,
+    @Query() callbackParams: EveSsoCallbackParams,
     @Session() session: ExpressSession,
     @Res() response: Response,
   ) {

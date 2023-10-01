@@ -10,7 +10,7 @@ import { ConfigService } from "../config/config.service";
 import { Consumer } from "../config/consumer.service";
 import { EVE_AUTH_SESSION_USER_ESI_ID_TOKEN } from "../constants";
 import { ExpressSession } from "../utils/express-session";
-import { CallbackParams } from "./dto/callback-params.dto";
+import { EveSsoCallbackParams } from "./dto/eve-sso-callback-params.dto";
 import { EveSsoVerifyTokenResponse } from "./dto/eve-sso-verify-token-response.dto";
 import { SsoTokens } from "./dto/sso-tokens.dto";
 
@@ -24,7 +24,7 @@ export class SsoService {
   ) {}
 
   async callback(
-    { code, state }: CallbackParams,
+    { code, state }: EveSsoCallbackParams,
     session: ExpressSession,
   ): Promise<void> {
     // FIXME: Access session state safely.

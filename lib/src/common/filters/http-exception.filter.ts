@@ -6,6 +6,7 @@ import {
 } from "@nestjs/common";
 import { Request, Response } from "express";
 
+// FIXME: Move this to nestjs-clone-bay.
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
