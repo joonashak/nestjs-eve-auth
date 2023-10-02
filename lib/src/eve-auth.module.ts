@@ -2,12 +2,14 @@ import { DynamicModule, Global, Module } from "@nestjs/common";
 import { ConfigModule } from "./config/config.module";
 import { EVE_AUTH_MODULE_OPTIONS_TOKEN } from "./constants";
 import { EveAuthModuleAsyncOptions } from "./interfaces/eve-auth-module-async-options.interface";
+import { SsoService } from "./sso";
 import { SsoModule } from "./sso/sso.module";
 
 @Global()
 @Module({
   imports: [ConfigModule, SsoModule],
-  exports: [EVE_AUTH_MODULE_OPTIONS_TOKEN],
+  providers: [SsoService],
+  exports: [EVE_AUTH_MODULE_OPTIONS_TOKEN, SsoService],
 })
 export class EveAuthModule {
   static forRootAsync(opt: EveAuthModuleAsyncOptions): DynamicModule {
