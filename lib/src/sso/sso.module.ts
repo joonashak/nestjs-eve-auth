@@ -6,5 +6,6 @@ import { SsoService } from "./sso.service";
 @Module({
   imports: [PassportModule],
   providers: [OAuthStrategy, SsoService],
+  exports: [SsoService],
 })
 export class SsoModule {}
