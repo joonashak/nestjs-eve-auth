@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { EveAuthModule, SsoService } from "nestjs-eve-auth";
+import { EveAuthModule } from "nestjs-eve-auth";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { AuthModule } from "./auth/auth.module";
@@ -26,6 +26,6 @@ import { UserService } from "./user/user.service";
     UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService, UserService, SsoService],
+  providers: [AppService, UserService],
 })
 export class AppModule {}
