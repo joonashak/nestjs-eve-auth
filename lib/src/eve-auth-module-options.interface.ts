@@ -1,4 +1,3 @@
-// Options that can be configured in forRootAsync's useFactory.
 export interface EveAuthModuleOptions {
   /**
    * Your app's EVE SSO Client ID.

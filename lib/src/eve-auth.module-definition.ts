@@ -1,5 +1,5 @@
 import { ConfigurableModuleBuilder } from "@nestjs/common";
-import { EveAuthModuleOptions } from "./interfaces";
+import { EveAuthModuleOptions } from "./eve-auth-module-options.interface";
 
 export const {
   ConfigurableModuleClass: ConfigurableEveAuthModule,

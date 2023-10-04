@@ -5,9 +5,9 @@ import {
   Logger,
 } from "@nestjs/common";
 import { validateSync } from "class-validator";
+import { EveAuthModuleOptions } from "../eve-auth-module-options.interface";
 import { EveAuthModule } from "../eve-auth.module";
 import { EVE_AUTH_MODULE_OPTIONS_TOKEN } from "../eve-auth.module-definition";
-import { EveAuthModuleOptions } from "../interfaces/eve-auth-module-options.interface";
 import { Config } from "./config.model";
 
 @Injectable()
