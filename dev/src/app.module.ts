@@ -14,7 +14,7 @@ import { UserService } from "./user/user.service";
       secretKey: process.env.SECRET_KEY,
       callbackUrl: "http://localhost:3000/sso/callback",
       afterLoginUrl: "http://localhost:3000",
-      scopes: ["asd"],
+      scopes: ["publicData", "esi-alliances.read_contacts.v1"],
     }),
     UserModule,
   ],
