@@ -21,6 +21,10 @@ export interface EveAuthModuleOptions {
    */
   afterLoginUrl: string;
   /**
+   * Permission scopes to request in SSO.
+   */
+  scopes?: string[];
+  /**
    * EVE SSO Authorization URL.
    *
    * It is not necessary to set this in normal use. This option is provided for

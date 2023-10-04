@@ -17,6 +17,7 @@ export class OAuthStrategy extends PassportStrategy(
       clientSecret: config.secretKey,
       callbackURL: config.callbackUrl,
       state: true,
+      scope: config.scopes,
     });
   }
 }

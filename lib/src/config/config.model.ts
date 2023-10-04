@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsUrl } from "class-validator";
+import { IsArray, IsNotEmpty, IsUrl } from "class-validator";
 
 export class Config {
   constructor(init?: Partial<Config>) {
@@ -16,6 +16,9 @@ export class Config {
 
   @IsUrl({ require_tld: false })
   afterLoginUrl: string;
+
+  @IsArray()
+  scopes: string[] = [];
 
   @IsUrl()
   authorizationUrl = "https://login.eveonline.com/v2/oauth/authorize";
