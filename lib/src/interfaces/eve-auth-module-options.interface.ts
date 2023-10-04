@@ -1,5 +1,3 @@
-import { EveAuthConsumerService } from "./eve-auth-consumer-service.interface";
-
 // Options that can be configured in forRootAsync's useFactory.
 export interface EveAuthModuleOptions {
   /**
@@ -23,10 +21,6 @@ export interface EveAuthModuleOptions {
    * URL whereto client is redirected after successful SSO login.
    */
   afterLoginUrl: string;
-  /**
-   * Service for integrating `nestjs-eve-auth` library with consumer application.
-   */
-  service: EveAuthConsumerService;
   /**
    * EVE SSO Authorization URL.
    *
