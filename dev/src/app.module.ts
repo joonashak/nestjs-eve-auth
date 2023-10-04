@@ -17,7 +17,6 @@ import { UserService } from "./user/user.service";
         afterLoginUrl: "http://localhost:3000",
       }),
     }),
-
     UserModule,
   ],
   controllers: [AppController],
