@@ -1,12 +1,12 @@
 import {
   BadRequestException,
   Injectable,
-  Logger,
   UnauthorizedException,
 } from "@nestjs/common";
 import axios from "axios";
 import * as FormData from "form-data";
 import { ConfigService } from "../config/config.service";
+import { Logger } from "../logger/logger.service";
 import { ExpressSession } from "../utils/express-session";
 import { EveSsoCallbackParams } from "./dto/eve-sso-callback-params.dto";
 import { EveSsoCallbackResult } from "./dto/eve-sso-callback-result.dto";
@@ -16,9 +16,8 @@ import { SessionService } from "./session.service";
 
 @Injectable()
 export class SsoService {
-  private readonly logger = new Logger(SsoService.name);
-
   constructor(
+    private logger: Logger,
     private configService: ConfigService,
     private sessionService: SessionService,
   ) {}

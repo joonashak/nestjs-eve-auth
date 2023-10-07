@@ -2,9 +2,9 @@ import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
-  Logger,
 } from "@nestjs/common";
 import { EVE_AUTH_SESSION_USER_ESI_ID_TOKEN } from "../constants";
+import { Logger } from "../logger/logger.service";
 import { ExpressSession } from "../utils/express-session";
 
 const OAUTH_SESSION_KEY = "oauth2:login.eveonline.com";
@@ -17,7 +17,7 @@ const OAUTH_SESSION_KEY = "oauth2:login.eveonline.com";
  */
 @Injectable()
 export class SessionService {
-  private readonly logger = new Logger(SessionService.name);
+  constructor(private logger: Logger) {}
 
   /**
    * Get OAuth2 session state from `express-session` or throw if not found.
