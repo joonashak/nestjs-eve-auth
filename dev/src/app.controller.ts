@@ -33,6 +33,11 @@ export class AppController {
     @Res() response: Response,
   ) {
     await this.ssoService.callback(callbackParams, session);
-    response.redirect("/");
+    response.redirect("/whoami");
+  }
+
+  @Get("whoami")
+  whoami(@Session() session: Record<string, any>) {
+    return "Logged in: " + session.userEsiId;
   }
 }
