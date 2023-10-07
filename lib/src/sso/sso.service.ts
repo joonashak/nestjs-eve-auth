@@ -44,4 +44,12 @@ export class SsoService {
     }
     return true;
   }
+
+  /**
+   * Log out, destroying session and revoking SSO refresh token.
+   */
+  async logout(refreshToken: string, session: ExpressSession) {
+    session.destroy();
+    await this.eveSsoService.revokeRefreshToken(refreshToken);
+  }
 }

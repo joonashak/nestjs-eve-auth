@@ -33,12 +33,18 @@ export class AppController {
     @Session() session: Record<string, any>,
     @Res() response: Response,
   ) {
-    await this.ssoService.callback(callbackParams, session);
+    const { tokens } = await this.ssoService.callback(callbackParams, session);
+    session.refreshToken = tokens.refreshToken;
     response.redirect("/whoami");
   }
 
   @Get("whoami")
   whoami(@CurrentUserEsiId() id: number) {
     return "Logged in: " + id;
+  }
+
+  @Get("logout")
+  async logout(@Session() session: Record<string, any>) {
+    await this.ssoService.logout(session.refreshToken, session);
   }
 }
