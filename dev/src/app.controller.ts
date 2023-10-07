@@ -1,6 +1,7 @@
 import { Controller, Get, Query, Res, Session } from "@nestjs/common";
 import { Response } from "express";
 import {
+  CurrentUserEsiId,
   EveSsoCallbackParams,
   RequireSsoAuth,
   SsoService,
@@ -37,7 +38,7 @@ export class AppController {
   }
 
   @Get("whoami")
-  whoami(@Session() session: Record<string, any>) {
-    return "Logged in: " + session.userEsiId;
+  whoami(@CurrentUserEsiId() id: number) {
+    return "Logged in: " + id;
   }
 }
