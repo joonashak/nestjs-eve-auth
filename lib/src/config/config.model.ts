@@ -28,4 +28,7 @@ export class Config {
 
   @IsUrl()
   verifyUrl = "https://login.eveonline.com/oauth/verify";
+
+  @IsUrl()
+  revocationUrl = "https://login.eveonline.com/v2/oauth/revoke";
 }

@@ -57,4 +57,24 @@ export class EveSsoService {
       throw new UnauthorizedException(message);
     }
   }
+
+  async revokeRefreshToken(refreshToken: string): Promise<void> {
+    const formData = new FormData();
+    formData.append("token_type_hint", "refresh_token");
+    formData.append("token", refreshToken);
+
+    const { clientId, secretKey, revocationUrl } = this.configService.config;
+
+    const auth = {
+      username: clientId,
+      password: secretKey,
+    };
+
+    const headers = {
+      "Content-Type": `multipart/form-data; boundary=${formData.getBoundary()}`,
+    };
+
+    const res = await axios.post(revocationUrl, formData, { auth, headers });
+    console.log(res);
+  }
 }
