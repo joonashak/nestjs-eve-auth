@@ -1,6 +1,6 @@
 {
   "name": "@joonashak/nestjs-eve-auth",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "author": "Joonas Häkkinen <joonashak@proton.me>",
   "license": "GPL-3.0-only",
