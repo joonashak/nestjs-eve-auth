@@ -7,32 +7,34 @@ import {
 import axios from "axios";
 import * as FormData from "form-data";
 import { ConfigService } from "../config/config.service";
-import { EVE_AUTH_SESSION_USER_ESI_ID_TOKEN } from "../constants";
 import { ExpressSession } from "../utils/express-session";
 import { EveSsoCallbackParams } from "./dto/eve-sso-callback-params.dto";
 import { EveSsoCallbackResult } from "./dto/eve-sso-callback-result.dto";
 import { EveSsoVerifyTokenResponse } from "./dto/eve-sso-verify-token-response.dto";
 import { SsoTokens } from "./dto/sso-tokens.dto";
+import { SessionService } from "./session.service";
 
 @Injectable()
 export class SsoService {
   private readonly logger = new Logger(SsoService.name);
 
-  constructor(private configService: ConfigService) {}
+  constructor(
+    private configService: ConfigService,
+    private sessionService: SessionService,
+  ) {}
 
   async callback(
     { code, state }: EveSsoCallbackParams,
     session: ExpressSession,
   ): Promise<EveSsoCallbackResult> {
-    // FIXME: Access session state safely.
-    const sessionState = session["oauth2:login.eveonline.com"].state;
+    const sessionState = this.sessionService.getStateOrFail(session);
     this.verifyState(state, sessionState);
     const tokens = await this.getTokens(code);
     const loginData = await this.verifyAndDecodeSsoAccessToken(
       tokens.accessToken,
     );
 
-    session[EVE_AUTH_SESSION_USER_ESI_ID_TOKEN] = loginData.CharacterID;
+    this.sessionService.setUserEsiId(session, loginData.CharacterID);
 
     return {
       tokens,
