@@ -1,5 +1,5 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import * as FormData from "form-data";
 import { ConfigService } from "../config/config.service";
 import { Logger } from "../logger/logger.service";
@@ -15,18 +15,9 @@ export class EveSsoService {
     formData.append("grant_type", "authorization_code");
     formData.append("code", code);
 
-    const { clientId, secretKey, tokenUrl } = this.configService.config;
+    const { tokenUrl } = this.configService.config;
 
-    const auth = {
-      username: clientId,
-      password: secretKey,
-    };
-
-    const headers = {
-      "Content-Type": `multipart/form-data; boundary=${formData.getBoundary()}`,
-    };
-
-    const { data } = await axios.post(tokenUrl, formData, { auth, headers });
+    const { data } = await this.post(tokenUrl, formData);
 
     return {
       accessToken: data.access_token,
@@ -63,7 +54,13 @@ export class EveSsoService {
     formData.append("token_type_hint", "refresh_token");
     formData.append("token", refreshToken);
 
-    const { clientId, secretKey, revocationUrl } = this.configService.config;
+    const { revocationUrl } = this.configService.config;
+
+    await this.post(revocationUrl, formData);
+  }
+
+  private async post(url: string, formData: FormData): Promise<AxiosResponse> {
+    const { clientId, secretKey } = this.configService.config;
 
     const auth = {
       username: clientId,
@@ -74,7 +71,6 @@ export class EveSsoService {
       "Content-Type": `multipart/form-data; boundary=${formData.getBoundary()}`,
     };
 
-    const res = await axios.post(revocationUrl, formData, { auth, headers });
-    console.log(res);
+    return axios.post(url, formData, { auth, headers });
   }
 }
