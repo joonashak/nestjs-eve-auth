@@ -3,7 +3,10 @@ import {
   Injectable,
   InternalServerErrorException,
 } from "@nestjs/common";
-import { EVE_AUTH_SESSION_USER_ESI_ID_TOKEN } from "../constants";
+import {
+  EVE_AUTH_SESSION_KEY,
+  EVE_AUTH_SESSION_USER_ESI_ID_KEY,
+} from "../constants";
 import { Logger } from "../logger/logger.service";
 import { ExpressSession } from "../utils/express-session";
 
@@ -44,6 +47,8 @@ export class SessionService {
       throw new BadRequestException(message);
     }
 
-    session[EVE_AUTH_SESSION_USER_ESI_ID_TOKEN] = userEsiId;
+    session[EVE_AUTH_SESSION_KEY] = {
+      [EVE_AUTH_SESSION_USER_ESI_ID_KEY]: userEsiId,
+    };
   }
 }
