@@ -1,8 +1,15 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import axios, { AxiosResponse } from "axios";
 import * as FormData from "form-data";
 import { ConfigService } from "../config/config.service";
-import { InvalidRefreshTokenException } from "../exceptions/invalid-refresh-token.exception";
+import {
+  InvalidAccessTokenException,
+  invalidAccessTokenMessage,
+} from "../exceptions/invalid-access-token.exception";
+import {
+  InvalidRefreshTokenException,
+  invalidRefreshTokenMessage,
+} from "../exceptions/invalid-refresh-token.exception";
 import { UnknownException } from "../exceptions/unknown.exception";
 import { Logger } from "../logger/logger.service";
 import { EveSsoVerifyTokenResponse } from "./dto/eve-sso-verify-token-response.dto";
@@ -32,7 +39,9 @@ export class EveSsoService {
   /**
    * Refresh SSO tokens using refresh token.
    *
-   * Note that the refresh token may change as well.
+   * Note that the refresh token may change as well. This is expected to fail
+   * sometimes with `InvalidRefreshTokenException` in normal use. You should handle
+   * at least that error type properly.
    */
   async refreshTokens(refreshToken: string): Promise<SsoTokens> {
     const formData = new FormData();
@@ -50,6 +59,7 @@ export class EveSsoService {
       };
     } catch (error) {
       if (error.response.status === 400) {
+        this.logger.verbose(invalidRefreshTokenMessage);
         throw new InvalidRefreshTokenException();
       }
       throw new UnknownException(error);
@@ -62,21 +72,20 @@ export class EveSsoService {
    * Returns character data if the token is valid.
    */
   async verifyAndDecodeSsoAccessToken(
-    token: string,
+    accessToken: string,
   ): Promise<EveSsoVerifyTokenResponse> {
     try {
       const { data } = await axios.get<EveSsoVerifyTokenResponse>(
         this.configService.config.verifyUrl,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${accessToken}` },
         },
       );
 
       return data;
     } catch {
-      const message = "SSO token verification failed.";
-      this.logger.error(message);
-      throw new UnauthorizedException(message);
+      this.logger.error(invalidAccessTokenMessage);
+      throw new InvalidAccessTokenException();
     }
   }
 
