@@ -2,6 +2,8 @@ import { Injectable, UnauthorizedException } from "@nestjs/common";
 import axios, { AxiosResponse } from "axios";
 import * as FormData from "form-data";
 import { ConfigService } from "../config/config.service";
+import { InvalidRefreshTokenException } from "../exceptions/invalid-refresh-token.exception";
+import { UnknownException } from "../exceptions/unknown.exception";
 import { Logger } from "../logger/logger.service";
 import { EveSsoVerifyTokenResponse } from "./dto/eve-sso-verify-token-response.dto";
 import { SsoTokens } from "./dto/sso-tokens.dto";
@@ -38,12 +40,20 @@ export class EveSsoService {
     formData.append("refresh_token", refreshToken);
 
     const { tokenUrl } = this.configService.config;
-    const { data } = await this.post(tokenUrl, formData);
 
-    return {
-      accessToken: data.access_token,
-      refreshToken: data.refresh_token,
-    };
+    try {
+      const { data } = await this.post(tokenUrl, formData);
+
+      return {
+        accessToken: data.access_token,
+        refreshToken: data.refresh_token,
+      };
+    } catch (error) {
+      if (error.response.status === 400) {
+        throw new InvalidRefreshTokenException();
+      }
+      throw new UnknownException(error);
+    }
   }
 
   /**
@@ -82,7 +92,6 @@ export class EveSsoService {
     formData.append("token", refreshToken);
 
     const { revocationUrl } = this.configService.config;
-    // FIXME: Throws with status 400 if token has been revoked or is otherwise invalid.
     await this.post(revocationUrl, formData);
   }
 
