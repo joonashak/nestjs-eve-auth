@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
+import {
+  SsoStateMismatchException,
+  ssoStateMismatchMessage,
+} from "../exceptions/sso-state-mismatch.exception";
 import { Logger } from "../logger/logger.service";
 import { ExpressSession } from "../utils/express-session";
 import { EveSsoCallbackParams } from "./dto/eve-sso-callback-params.dto";
@@ -39,9 +43,8 @@ export class SsoService {
 
   private verifyState(callbackState: string, sessionState: string): boolean {
     if (callbackState !== sessionState) {
-      const message = "SSO states do not match.";
-      this.logger.error(message);
-      throw new BadRequestException(message);
+      this.logger.error(ssoStateMismatchMessage);
+      throw new SsoStateMismatchException();
     }
     return true;
   }
