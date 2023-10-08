@@ -47,4 +47,9 @@ export class AppController {
   async logout(@Session() session: Record<string, any>) {
     await this.ssoService.logout(session.refreshToken, session);
   }
+
+  @Get("refresh")
+  async refreshTokens(@Session() session: Record<string, any>) {
+    await this.ssoService.refreshTokens(session.refreshToken);
+  }
 }

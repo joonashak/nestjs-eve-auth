@@ -3,6 +3,7 @@ import { Logger } from "../logger/logger.service";
 import { ExpressSession } from "../utils/express-session";
 import { EveSsoCallbackParams } from "./dto/eve-sso-callback-params.dto";
 import { EveSsoCallbackResult } from "./dto/eve-sso-callback-result.dto";
+import { SsoTokens } from "./dto/sso-tokens.dto";
 import { EveSsoService } from "./eve-sso.service";
 import { SessionService } from "./session.service";
 
@@ -51,5 +52,15 @@ export class SsoService {
   async logout(refreshToken: string, session: ExpressSession) {
     session.destroy();
     await this.eveSsoService.revokeRefreshToken(refreshToken);
+  }
+
+  /**
+   * Refresh SSO tokens using refresh token.
+   *
+   * Note that the refresh token may change as well.
+   */
+  async refreshTokens(refreshToken: string): Promise<SsoTokens> {
+    // TODO: Check that given refreshToken is valid.
+    return this.eveSsoService.refreshTokens(refreshToken);
   }
 }

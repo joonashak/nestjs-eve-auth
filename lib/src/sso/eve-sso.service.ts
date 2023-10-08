@@ -10,13 +10,34 @@ import { SsoTokens } from "./dto/sso-tokens.dto";
 export class EveSsoService {
   constructor(private logger: Logger, private configService: ConfigService) {}
 
+  /**
+   * Get SSO tokens from EVE SSO API using authorization code.
+   */
   async getTokens(code: string): Promise<SsoTokens> {
     const formData = new FormData();
     formData.append("grant_type", "authorization_code");
     formData.append("code", code);
 
     const { tokenUrl } = this.configService.config;
+    const { data } = await this.post(tokenUrl, formData);
 
+    return {
+      accessToken: data.access_token,
+      refreshToken: data.refresh_token,
+    };
+  }
+
+  /**
+   * Refresh SSO tokens using refresh token.
+   *
+   * Note that the refresh token may change as well.
+   */
+  async refreshTokens(refreshToken: string): Promise<SsoTokens> {
+    const formData = new FormData();
+    formData.append("grant_type", "refresh_token");
+    formData.append("refresh_token", refreshToken);
+
+    const { tokenUrl } = this.configService.config;
     const { data } = await this.post(tokenUrl, formData);
 
     return {
@@ -49,13 +70,19 @@ export class EveSsoService {
     }
   }
 
+  /**
+   * Revoke SSO refresh token.
+   *
+   * EVE SSO API will respond with 200 regardless of whether or not the token was
+   * actually revoked or not found.
+   */
   async revokeRefreshToken(refreshToken: string): Promise<void> {
     const formData = new FormData();
     formData.append("token_type_hint", "refresh_token");
     formData.append("token", refreshToken);
 
     const { revocationUrl } = this.configService.config;
-
+    // FIXME: Throws with status 400 if token has been revoked or is otherwise invalid.
     await this.post(revocationUrl, formData);
   }
 
