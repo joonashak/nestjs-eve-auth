@@ -63,7 +63,6 @@ export class SsoService {
    * Note that the refresh token may change as well.
    */
   async refreshTokens(refreshToken: string): Promise<SsoTokens> {
-    // TODO: Check that given refreshToken is valid.
     return this.eveSsoService.refreshTokens(refreshToken);
   }
 }

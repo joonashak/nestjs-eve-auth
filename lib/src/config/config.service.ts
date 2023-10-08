@@ -1,11 +1,8 @@
-import {
-  Inject,
-  Injectable,
-  InternalServerErrorException,
-} from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { validateSync } from "class-validator";
 import { EveAuthModuleOptions } from "../eve-auth-module-options.interface";
 import { EVE_AUTH_MODULE_OPTIONS_TOKEN } from "../eve-auth.module-definition";
+import { InvalidConfigurationException } from "../exceptions/invalid-configuration.exception";
 import { Config } from "./config.model";
 
 @Injectable()
@@ -20,9 +17,7 @@ export class ConfigService {
     const errors = validateSync(this.config);
 
     if (errors.length) {
-      throw new InternalServerErrorException(
-        "nestjs-eve-auth is not correctly configured.",
-      );
+      throw new InvalidConfigurationException();
     }
   }
 }
