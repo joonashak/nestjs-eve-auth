@@ -1,4 +1,7 @@
 import { UseGuards, applyDecorators } from "@nestjs/common";
-import { TokenAuthGuard } from "../guards/token-auth.guard";
+import { AuthGuard } from "../guards/auth.guard";
 
-export const RequireAuth = () => applyDecorators(UseGuards(TokenAuthGuard));
+/**
+ * Require authentication by `nestjs-eve-auth` to use decorated entity.
+ */
+export const RequireAuth = () => applyDecorators(UseGuards(AuthGuard));

@@ -1,12 +1,12 @@
 import { EVE_AUTH_SESSION_USER_ESI_ID_TOKEN } from "../constants";
 import { mockContextWithSession } from "../test-utils/mock-context";
-import { TokenAuthGuard } from "./token-auth.guard";
+import { AuthGuard } from "./auth.guard";
 
 describe("TokenAuthGuard", () => {
-  let guard: TokenAuthGuard;
+  let guard: AuthGuard;
 
   beforeEach(() => {
-    guard = new TokenAuthGuard();
+    guard = new AuthGuard();
   });
 
   it("Allows access with existing user ID in session data", () => {
