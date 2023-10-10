@@ -4,7 +4,7 @@ import {
   EVE_AUTH_SESSION_USER_ESI_ID_KEY,
 } from "../constants";
 import { SessionStateNotFound } from "../exceptions";
-import { provideMockLogger } from "../test-utils/mock-logger";
+import { provideMockLogger } from "../test-utils/mock-services";
 import { mockSessionState } from "../test-utils/mock-session";
 import { SessionService } from "./session.service";
 
