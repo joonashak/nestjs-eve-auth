@@ -27,7 +27,7 @@ export class SessionService {
    * Get OAuth2 session state from `express-session` or throw if not found.
    */
   getStateOrFail(session: ExpressSession): string {
-    const sessionState = session[OAUTH_SESSION_KEY].state || undefined;
+    const sessionState = session[OAUTH_SESSION_KEY]?.state;
 
     if (!sessionState) {
       this.logger.error(sessionStateNotFoundMessage);
