@@ -1,13 +1,17 @@
+import { Injectable } from "@nestjs/common";
 import {
-  BadRequestException,
-  Injectable,
-  InternalServerErrorException,
-} from "@nestjs/common";
+  InvalidEsiIdException,
+  invalidEsiIdMessage,
+} from "../exceptions/invalid-esi-id.exception";
+import {
+  SessionStateNotFound,
+  sessionStateNotFoundMessage,
+} from "../exceptions/session-state-not-found.exception";
 import { Logger } from "../logger/logger.service";
 import { ExpressSession } from "../utils/express-session";
 import { SessionUtils } from "./session.utils";
 
-const OAUTH_SESSION_KEY = "oauth2:login.eveonline.com";
+export const OAUTH_SESSION_KEY = "oauth2:login.eveonline.com";
 
 /**
  * Encapsulation for session-related methods.
@@ -26,9 +30,8 @@ export class SessionService {
     const sessionState = session[OAUTH_SESSION_KEY].state || undefined;
 
     if (!sessionState) {
-      const message = "Failed to read session state.";
-      this.logger.error(message);
-      throw new InternalServerErrorException(message);
+      this.logger.error(sessionStateNotFoundMessage);
+      throw new SessionStateNotFound();
     }
 
     return sessionState;
@@ -39,9 +42,8 @@ export class SessionService {
    */
   setUserEsiId(session: ExpressSession, userEsiId: number): void {
     if (Number.isNaN(userEsiId)) {
-      const message = "Invalid ESI ID.";
-      this.logger.error(message);
-      throw new BadRequestException(message);
+      this.logger.error(invalidEsiIdMessage);
+      throw new InvalidEsiIdException();
     }
 
     SessionUtils.saveUserEsiId(session, userEsiId);
