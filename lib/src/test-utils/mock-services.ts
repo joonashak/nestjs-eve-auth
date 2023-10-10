@@ -4,18 +4,13 @@ import { EveSsoService } from "../sso/eve-sso.service";
 import { SessionService } from "../sso/session.service";
 
 export const provideMockService =
-  <T extends object>(token: T) =>
-  () => ({
+  <T extends abstract new (...args: any) => any>(token: T) =>
+  (partial?: Partial<InstanceType<T>>) => ({
     provide: token,
-    useFactory: () => createMock<T>(),
+    useFactory: () => createMock<InstanceType<T>>(partial || {}),
   });
 
 export const provideMockLogger = provideMockService(Logger);
-
-// export const provideMockLogger2 = () => ({
-//   provide: Logger,
-//   useFactory: () => createMock<Logger>(),
-// });
 
 export const provideMockSessionService = provideMockService(SessionService);
 
