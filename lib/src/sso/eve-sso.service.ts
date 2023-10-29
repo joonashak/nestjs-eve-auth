@@ -28,6 +28,7 @@ export class EveSsoService {
     formData.append("code", code);
 
     const { tokenUrl } = this.configService.config;
+    // TODO: Some error handling might be good here...
     const { data } = await this.post(tokenUrl, formData);
 
     return {
