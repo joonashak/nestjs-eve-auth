@@ -1,0 +1,17 @@
+{
+  "name": "docs",
+  "version": "0.0.1",
+  "description": "Documentation for @joonashak/nestjs-eve-auth library.",
+  "authors": {
+    "name": "Joonas Häkkinen",
+    "email": "hakkijoo@gmail.com"
+  },
+  "scripts": {
+    "start": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "GPL-3.0-only",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}

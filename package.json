@@ -10,7 +10,8 @@
     "lint:lib": "cd lib && npm run lint",
     "preversion": "if [ $(git rev-parse --abbrev-ref HEAD) != 'main' ]; then exit 1; fi ",
     "version": "scripts/version_sub_projects.sh $npm_package_version",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "docs": "cd docs && npm start"
   },
   "author": "Joonas Häkkinen <joonashak@proton.me>",
   "license": "GPL-3.0-only",
