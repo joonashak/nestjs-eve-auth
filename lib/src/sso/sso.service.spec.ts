@@ -1,4 +1,5 @@
 import { Test } from "@nestjs/testing";
+import { SsoStateMismatchException } from "../exceptions";
 import {
   provideMockEveSsoService,
   provideMockLogger,
@@ -46,7 +47,7 @@ describe("SsoService", () => {
     eveSsoService = module.get(EveSsoService);
   });
 
-  describe("callback", () => {
+  describe("Callback from EVE SSO server", () => {
     it("Handles good callback correctly", async () => {
       const code = "fj4038q";
 
@@ -58,6 +59,42 @@ describe("SsoService", () => {
       expect(eveSsoService.verifyAndDecodeSsoAccessToken).toBeCalledTimes(1);
       expect(sessionService.setUserEsiId).toBeCalledTimes(1);
       expect(sessionService.setUserEsiId).toBeCalledWith({}, character.id);
+    });
+
+    it("Throws for missing state", async () => {
+      const test = async () =>
+        ssoService.callback({ code: "asd", state: "" }, {});
+      await expect(test()).rejects.toThrow(SsoStateMismatchException);
+    });
+
+    it("Throws for wrong state", async () => {
+      const test = async () =>
+        ssoService.callback({ code: "asd", state: state + "a" }, {});
+      await expect(test()).rejects.toThrow(SsoStateMismatchException);
+    });
+  });
+
+  describe("Logout", () => {
+    it("Destroys express session", async () => {
+      const session = { destroy: jest.fn() };
+      await ssoService.logout("", session);
+      expect(session.destroy).toBeCalledTimes(1);
+    });
+
+    it("Revokes SSO refresh token", async () => {
+      const refreshToken = "jd98qh39";
+      const session = { destroy: jest.fn() };
+      await ssoService.logout(refreshToken, session);
+      expect(eveSsoService.revokeRefreshToken).toBeCalledTimes(1);
+      expect(eveSsoService.revokeRefreshToken).toBeCalledWith(refreshToken);
+    });
+  });
+
+  describe("Token refreshing", () => {
+    it("Refreshes tokens via EveSsoService", async () => {
+      const refreshToken = "09n3n2f8d0h";
+      await ssoService.refreshTokens(refreshToken);
+      expect(eveSsoService.refreshTokens).toBeCalledWith(refreshToken);
     });
   });
 });
