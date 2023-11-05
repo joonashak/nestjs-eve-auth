@@ -2,7 +2,7 @@ const { description } = require('../../package')
 
 module.exports = {
   base: '/nestjs-eve-auth/',
-  title: 'Vuepress Docs Boilerplate',
+  title: 'nestjs-eve-auth',
   description: description,
   head: [
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
@@ -17,30 +17,18 @@ module.exports = {
     editLinkText: '',
     lastUpdated: true,
     nav: [
-      {
-        text: 'Guide',
-        link: '/guide/',
-      },
-      {
-        text: 'Config',
-        link: '/config/'
-      },
-      {
-        text: 'VuePress',
-        link: 'https://v1.vuepress.vuejs.org'
-      }
     ],
     sidebar: {
-      '/guide/': [
-        {
-          title: 'Guide',
-          collapsable: false,
-          children: [
-            '',
-            'using-vue',
-          ]
-        }
-      ],
+      // '/guide/': [
+      //   {
+      //     title: 'Guide',
+      //     collapsable: false,
+      //     children: [
+      //       '',
+      //       'using-vue',
+      //     ]
+      //   }
+      // ],
     }
   },
   plugins: [
