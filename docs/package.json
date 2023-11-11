@@ -12,6 +12,6 @@
   },
   "license": "GPL-3.0-only",
   "devDependencies": {
-    "vuepress": "^1.5.3"
+    "vuepress": "^2.0.0-beta.68"
   }
 }
