@@ -1,0 +1,7 @@
+# API Reference
+
+...
+
+## `someMethod`
+
+asd
