@@ -1,4 +1,5 @@
 import { defaultTheme, defineUserConfig } from "vuepress";
+import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 import sidebar from "./sidebar";
 
 export default defineUserConfig({
@@ -12,4 +13,5 @@ export default defineUserConfig({
     contributors: false,
     sidebar,
   }),
+  plugins: [copyCodePlugin()],
 });
