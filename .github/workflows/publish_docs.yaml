@@ -2,6 +2,10 @@ name: Publish documentation
 
 on:
   workflow_call:
+  # Allow updating docs without releasing a new version by pushing to `update-docs` branch.
+  push:
+    branches:
+      - update-docs
 
 jobs:
   build:
