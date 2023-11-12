@@ -17,4 +17,4 @@ export const CurrentUserEsiId = createParamDecorator(
 
     return Number(userEsiId);
   },
-);
+) as () => ParameterDecorator; // Type assertion hides unnecessary params in docs.
