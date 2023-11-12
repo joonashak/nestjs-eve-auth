@@ -14,5 +14,16 @@
   "excludePrivate": true,
   "excludeInternal": true,
   "categorizeByGroup": false,
-  "cleanOutputDir": true
+  "cleanOutputDir": true,
+  "name": "API Reference",
+  "allReflectionsHaveOwnDocument": true,
+  "groupOrder": [
+    "Modules",
+    "Services",
+    "Guards",
+    "Types",
+    "Decorators",
+    "Exceptions",
+    "*"
+  ]
 }

@@ -9,7 +9,7 @@
   "scripts": {
     "start": "vuepress dev src",
     "build": "vuepress build src",
-    "generate": "typedoc && rm src/api/README.md && mv src/api/modules.md src/api/index.md && sed -i '' '1s/.*/# API Reference/' src/api/index.md"
+    "generate": "typedoc && rm src/api/README.md && mv src/api/modules.md src/api/index.md"
   },
   "license": "GPL-3.0-only",
   "devDependencies": {
