@@ -11,8 +11,12 @@ import { SsoTokens } from "./dto/sso-tokens.dto";
 import { EveSsoService } from "./eve-sso.service";
 import { SessionService } from "./session.service";
 
+/**
+ * @group Services
+ */
 @Injectable()
 export class SsoService {
+  /** @internal */
   constructor(
     private logger: Logger,
     private sessionService: SessionService,

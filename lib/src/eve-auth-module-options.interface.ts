@@ -1,3 +1,4 @@
+/** @group Types */
 export interface EveAuthModuleOptions {
   /**
    * Your app's EVE SSO Client ID.

@@ -1,8 +1,10 @@
 import { ExecutionContext, createParamDecorator } from "@nestjs/common";
-import { SessionUtils } from "../sso";
+import { SessionUtils } from "../sso/session.utils";
 
 /**
  * Parameter decorator to get current user's ESI ID.
+ *
+ * @group Decorators
  */
 export const CurrentUserEsiId = createParamDecorator(
   (_, context: ExecutionContext): number | undefined => {

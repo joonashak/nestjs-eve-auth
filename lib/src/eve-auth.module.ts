@@ -6,6 +6,7 @@ import {
 } from "./eve-auth.module-definition";
 import { SsoModule } from "./sso/sso.module";
 
+/** @group Modules */
 @Global()
 @Module({
   imports: [ConfigModule, SsoModule],
