@@ -1,5 +1,11 @@
 # Class: EveAuthModule
 
+Main module of `nestjs-eve-auth` library.
+
+Provides configuration to the library and exports its public API. You can
+import this simply in your application's root module or encapsulate it in
+another module.
+
 ## Hierarchy
 
 - `ConfigurableEveAuthModule`
@@ -34,6 +40,10 @@ lib/node_modules/@nestjs/common/module-utils/interfaces/configurable-module-cls.
 
 ▸ (`options`): `DynamicModule`
 
+Configure `nestjs-eve-auth` and return the module for
+  importing in a Nest.js module definition. See [configuration
+  docs](https://joonashak.github.io/nestjs-eve-auth/usage/configuration.html).
+
 ##### Parameters
 
 | Name | Type |
@@ -57,6 +67,10 @@ ___
 #### Type declaration
 
 ▸ (`options`): `DynamicModule`
+
+Configure `nestjs-eve-auth` asynchronously and return
+  the module for importing in a Nest.js module definition. See [configuration
+  docs](https://joonashak.github.io/nestjs-eve-auth/usage/configuration.html).
 
 ##### Parameters
 

@@ -6,7 +6,21 @@ import {
 } from "./eve-auth.module-definition";
 import { SsoModule } from "./sso/sso.module";
 
-/** @group Modules */
+/**
+ * Main module of `nestjs-eve-auth` library.
+ *
+ * Provides configuration to the library and exports its public API. You can
+ * import this simply in your application's root module or encapsulate it in
+ * another module.
+ *
+ * @property forRoot Configure `nestjs-eve-auth` and return the module for
+ *   importing in a Nest.js module definition. See [configuration
+ *   docs](https://joonashak.github.io/nestjs-eve-auth/usage/configuration.html).
+ * @property forRootAsync Configure `nestjs-eve-auth` asynchronously and return
+ *   the module for importing in a Nest.js module definition. See [configuration
+ *   docs](https://joonashak.github.io/nestjs-eve-auth/usage/configuration.html).
+ * @group Modules
+ */
 @Global()
 @Module({
   imports: [ConfigModule, SsoModule],
