@@ -6,7 +6,9 @@
 
 Before you can use EVE SSO you must register your application at [EVE Developer Portal](https://developers.eveonline.com/applications). Make sure to use the same `callbackUrl` value in your configuration and application registration (can be changed later).
 
-_Remember to take care not to commit your EVE SSO secrets to version control!_
+::: danger
+Remember to take care not to commit your EVE SSO secrets to version control!
+:::
 
 ## Library Configuration
 

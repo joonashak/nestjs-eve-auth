@@ -19,4 +19,4 @@ If you find a vulnerability in `nestjs-eve-auth`, please open an issue, or even 
 
 ## Documentation Version
 
-This documentation is published from the latest stable version released to NPM. For other versions, please check out the relevant tag or commit, and read the docs locally. (`npm run docs` in repo root launches the documentation dev server.)
+This documentation is published from the latest stable version released to NPM. For other versions, please checkout the relevant tag or commit, and read the docs locally. (`npm run docs` in repo root launches the documentation dev server.)

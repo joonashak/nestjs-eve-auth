@@ -2,7 +2,9 @@
 
 All commands are run in repository root unless otherwise noted.
 
-_These commands are used to control the development environment, etc. They are not applicable to normal use of the library._
+:::tip
+These commands are used to control the development environment, etc. They are not applicable to normal use of the library.
+:::
 
 ## Development Environment
 
@@ -10,11 +12,13 @@ _These commands are used to control the development environment, etc. They are n
 
 Build the libarary and start the dev application with the locally built library as dependency. The application is accessible at [http://localhost:3000](http://localhost:3000).
 
-Changes to the dev app's code are hot-reloaded but library changes are not. To rebuild the library and run dev with the changes, simply `Ctrl+C` and run `npm start` again.
-
 ```bash
 npm start
 ```
+
+:::tip
+Changes to the _dev app_'s code are hot-reloaded but _library_ changes are not. To rebuild the library and run dev with the changes, simply `Ctrl+C` and run `npm start` again.
+:::
 
 ### Stop Development Environment
 
