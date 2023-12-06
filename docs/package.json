@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "0.0.1",
+  "version": "0.2.1",
   "description": "Documentation for @joonashak/nestjs-eve-auth library.",
   "authors": {
     "name": "Joonas Häkkinen",
