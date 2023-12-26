@@ -1,6 +1,6 @@
 {
   "name": "nestjs-eve-auth",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "NestJS package to support EVE SSO authentication flow",
   "scripts": {
     "start": "docker compose up -d && cd lib && npm run build && cd ../dev && npm run start:dev",
