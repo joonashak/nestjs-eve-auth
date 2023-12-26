@@ -75,16 +75,9 @@ describe("SsoService", () => {
   });
 
   describe("Logout", () => {
-    it("Destroys express session", async () => {
-      const session = { destroy: jest.fn() };
-      await ssoService.logout("", session);
-      expect(session.destroy).toBeCalledTimes(1);
-    });
-
     it("Revokes SSO refresh token", async () => {
       const refreshToken = "jd98qh39";
-      const session = { destroy: jest.fn() };
-      await ssoService.logout(refreshToken, session);
+      await ssoService.revokeRefreshToken(refreshToken);
       expect(eveSsoService.revokeRefreshToken).toBeCalledTimes(1);
       expect(eveSsoService.revokeRefreshToken).toBeCalledWith(refreshToken);
     });

@@ -11,9 +11,7 @@ import { SsoTokens } from "./dto/sso-tokens.dto";
 import { EveSsoService } from "./eve-sso.service";
 import { SessionService } from "./session.service";
 
-/**
- * @group Services
- */
+/** @group Services */
 @Injectable()
 export class SsoService {
   /** @internal */
@@ -54,10 +52,12 @@ export class SsoService {
   }
 
   /**
-   * Log out, destroying session and revoking SSO refresh token.
+   * Revoke SSO refresh token.
+   *
+   * Note that EVE SSO provides no information of whether or not the token was
+   * actually revoked.
    */
-  async logout(refreshToken: string, session: ExpressSession) {
-    session.destroy();
+  async revokeRefreshToken(refreshToken: string): Promise<void> {
     await this.eveSsoService.revokeRefreshToken(refreshToken);
   }
 
