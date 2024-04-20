@@ -6,7 +6,6 @@ export const defaultMockConfiguration: Config = {
   clientId: "n0284f03b74q",
   secretKey: "+9nfbu34b937vr85-3d",
   callbackUrl: "https://example.com/callback",
-  afterLoginUrl: "https://example.com/after-login",
   scopes: ["test-scope-1", "test-scope-2"],
   authorizationUrl: "https://example.com/v2/oauth/authorize",
   tokenUrl: "https://example.com/v2/oauth/token",
