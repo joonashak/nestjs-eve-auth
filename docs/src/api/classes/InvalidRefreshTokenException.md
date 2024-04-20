@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[lib/src/exceptions/invalid-refresh-token.exception.ts:8](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/exceptions/invalid-refresh-token.exception.ts#L8)
+[lib/src/exceptions/invalid-refresh-token.exception.ts:8](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/exceptions/invalid-refresh-token.exception.ts#L8)
 
 ## Methods
 

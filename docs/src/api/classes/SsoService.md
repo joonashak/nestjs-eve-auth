@@ -19,30 +19,7 @@
 
 #### Defined in
 
-[lib/src/sso/sso.service.ts:26](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/sso/sso.service.ts#L26)
-
-___
-
-### logout
-
-▸ **logout**(`refreshToken`, `session`): `Promise`\<`void`\>
-
-Log out, destroying session and revoking SSO refresh token.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `refreshToken` | `string` |
-| `session` | `ExpressSession` |
-
-#### Returns
-
-`Promise`\<`void`\>
-
-#### Defined in
-
-[lib/src/sso/sso.service.ts:59](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/sso/sso.service.ts#L59)
+[lib/src/sso/sso.service.ts:24](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/sso/sso.service.ts#L24)
 
 ___
 
@@ -66,4 +43,29 @@ Note that the refresh token may change as well.
 
 #### Defined in
 
-[lib/src/sso/sso.service.ts:69](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/sso/sso.service.ts#L69)
+[lib/src/sso/sso.service.ts:69](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/sso/sso.service.ts#L69)
+
+___
+
+### revokeRefreshToken
+
+▸ **revokeRefreshToken**(`refreshToken`): `Promise`\<`void`\>
+
+Revoke SSO refresh token.
+
+Note that EVE SSO provides no information of whether or not the token was
+actually revoked.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `refreshToken` | `string` |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Defined in
+
+[lib/src/sso/sso.service.ts:60](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/sso/sso.service.ts#L60)

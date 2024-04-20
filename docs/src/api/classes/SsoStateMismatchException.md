@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[lib/src/exceptions/sso-state-mismatch.exception.ts:9](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/exceptions/sso-state-mismatch.exception.ts#L9)
+[lib/src/exceptions/sso-state-mismatch.exception.ts:9](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/exceptions/sso-state-mismatch.exception.ts#L9)
 
 ## Methods
 

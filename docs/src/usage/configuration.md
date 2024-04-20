@@ -24,7 +24,6 @@ import { EveAuthModule } from "@joonashak/nestjs-eve-auth";
       clientId: process.env.CLIENT_ID,
       secretKey: process.env.SECRET_KEY,
       callbackUrl: "http://localhost:3000/sso/callback",
-      afterLoginUrl: "http://localhost:3000",
     }),
   ],
 })

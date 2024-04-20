@@ -2,18 +2,6 @@
 
 ## Properties
 
-### afterLoginUrl
-
-• **afterLoginUrl**: `string`
-
-URL whereto client is redirected after successful SSO login.
-
-#### Defined in
-
-[lib/src/eve-auth-module-options.interface.ts:23](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/eve-auth-module-options.interface.ts#L23)
-
-___
-
 ### authorizationUrl
 
 • `Optional` **authorizationUrl**: `string`
@@ -25,7 +13,7 @@ redundancy.
 
 #### Defined in
 
-[lib/src/eve-auth-module-options.interface.ts:34](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/eve-auth-module-options.interface.ts#L34)
+[lib/src/eve-auth-module-options.interface.ts:24](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/eve-auth-module-options.interface.ts#L24)
 
 ___
 
@@ -42,7 +30,7 @@ could be `http://localhost:3000/sso/callback`.
 
 #### Defined in
 
-[lib/src/eve-auth-module-options.interface.ts:19](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/eve-auth-module-options.interface.ts#L19)
+[lib/src/eve-auth-module-options.interface.ts:15](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/eve-auth-module-options.interface.ts#L15)
 
 ___
 
@@ -54,7 +42,7 @@ Your app's EVE SSO Client ID.
 
 #### Defined in
 
-[lib/src/eve-auth-module-options.interface.ts:6](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/eve-auth-module-options.interface.ts#L6)
+[lib/src/eve-auth-module-options.interface.ts:4](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/eve-auth-module-options.interface.ts#L4)
 
 ___
 
@@ -69,7 +57,7 @@ redundancy.
 
 #### Defined in
 
-[lib/src/eve-auth-module-options.interface.ts:55](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/eve-auth-module-options.interface.ts#L55)
+[lib/src/eve-auth-module-options.interface.ts:45](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/eve-auth-module-options.interface.ts#L45)
 
 ___
 
@@ -81,7 +69,7 @@ Permission scopes to request in SSO.
 
 #### Defined in
 
-[lib/src/eve-auth-module-options.interface.ts:27](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/eve-auth-module-options.interface.ts#L27)
+[lib/src/eve-auth-module-options.interface.ts:17](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/eve-auth-module-options.interface.ts#L17)
 
 ___
 
@@ -93,7 +81,7 @@ Your app's EVE SSO Secret Key.
 
 #### Defined in
 
-[lib/src/eve-auth-module-options.interface.ts:10](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/eve-auth-module-options.interface.ts#L10)
+[lib/src/eve-auth-module-options.interface.ts:6](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/eve-auth-module-options.interface.ts#L6)
 
 ___
 
@@ -108,7 +96,7 @@ redundancy.
 
 #### Defined in
 
-[lib/src/eve-auth-module-options.interface.ts:41](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/eve-auth-module-options.interface.ts#L41)
+[lib/src/eve-auth-module-options.interface.ts:31](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/eve-auth-module-options.interface.ts#L31)
 
 ___
 
@@ -123,4 +111,4 @@ redundancy.
 
 #### Defined in
 
-[lib/src/eve-auth-module-options.interface.ts:48](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/eve-auth-module-options.interface.ts#L48)
+[lib/src/eve-auth-module-options.interface.ts:38](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/eve-auth-module-options.interface.ts#L38)

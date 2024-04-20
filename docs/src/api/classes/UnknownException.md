@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[lib/src/exceptions/unknown.exception.ts:7](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/exceptions/unknown.exception.ts#L7)
+[lib/src/exceptions/unknown.exception.ts:7](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/exceptions/unknown.exception.ts#L7)
 
 ## Methods
 

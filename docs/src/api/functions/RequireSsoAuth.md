@@ -8,4 +8,4 @@
 
 #### Defined in
 
-[lib/src/decorators/require-sso-auth.decorator.ts:6](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/decorators/require-sso-auth.decorator.ts#L6)
+[lib/src/decorators/require-sso-auth.decorator.ts:6](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/decorators/require-sso-auth.decorator.ts#L6)

@@ -38,4 +38,4 @@ CanActivate.canActivate
 
 #### Defined in
 
-[lib/src/guards/auth.guard.ts:12](https://github.com/joonashak/nestjs-eve-auth/blob/db41b3e/lib/src/guards/auth.guard.ts#L12)
+[lib/src/guards/auth.guard.ts:12](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/guards/auth.guard.ts#L12)
