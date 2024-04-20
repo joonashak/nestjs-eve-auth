@@ -10,8 +10,7 @@ describe("ConfigService", () => {
 
   it("Validates options", () => {
     expect(
-      () =>
-        new ConfigService({ ...mockModuleOptions, afterLoginUrl: "not a URL" }),
+      () => new ConfigService({ ...mockModuleOptions, tokenUrl: "not a URL" }),
     ).toThrow(InvalidConfigurationException);
   });
 });
