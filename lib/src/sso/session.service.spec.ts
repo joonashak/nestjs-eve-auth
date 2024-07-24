@@ -4,6 +4,7 @@ import {
   EVE_AUTH_SESSION_USER_ESI_ID_KEY,
 } from "../constants";
 import { SessionStateNotFound } from "../exceptions";
+import { provideMockConfigService } from "../test-utils/mock-config";
 import { provideMockLogger } from "../test-utils/mock-services";
 import { mockSessionState } from "../test-utils/mock-session";
 import { SessionService } from "./session.service";
@@ -13,7 +14,11 @@ describe("SessionService", () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
-      providers: [SessionService, provideMockLogger()],
+      providers: [
+        SessionService,
+        provideMockLogger(),
+        provideMockConfigService(),
+      ],
     }).compile();
 
     sessionService = module.get(SessionService);

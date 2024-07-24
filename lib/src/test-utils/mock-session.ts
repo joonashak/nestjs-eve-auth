@@ -1,7 +1,5 @@
-import { OAUTH_SESSION_KEY } from "../sso/session.service";
-
 export const mockSessionState = (state: string) => ({
-  [OAUTH_SESSION_KEY]: {
+  "oauth2:example.com": {
     state,
   },
 });
