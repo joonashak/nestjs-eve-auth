@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, InternalServerErrorException } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
 import { Strategy } from "passport-oauth2";
 import { ConfigService } from "../config/config.service";
@@ -16,5 +16,15 @@ export class OAuthStrategy extends PassportStrategy(Strategy, OAUTH_STRATEGY_TOK
       state: true,
       scope: config.scopes,
     });
+  }
+
+  /**
+   * This is never called for this strategy but required in type after updating
+   * to Nest.js v11.
+   */
+  validate(): unknown {
+    throw new InternalServerErrorException(
+      "Passport strategy validate() method not implemented. This should have never been called.",
+    );
   }
 }
