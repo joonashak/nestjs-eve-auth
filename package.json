@@ -12,7 +12,8 @@
     "version": "scripts/version_sub_projects.sh $npm_package_version",
     "postversion": "git push && git push --tags",
     "docs": "cd docs && npm start",
-    "generate": "cd docs && npm run generate"
+    "generate": "cd docs && npm run generate",
+    "check-formatting": "prettier --check ."
   },
   "author": "Joonas Häkkinen <joonashak@proton.me>",
   "license": "GPL-3.0-only",
