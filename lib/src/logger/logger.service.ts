@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ConsoleLogger, Inject, Injectable, Scope } from "@nestjs/common";
 import { INQUIRER } from "@nestjs/core";
 

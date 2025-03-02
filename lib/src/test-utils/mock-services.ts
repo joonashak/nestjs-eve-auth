@@ -4,11 +4,12 @@ import { EveSsoService } from "../sso/eve-sso.service";
 import { SessionService } from "../sso/session.service";
 
 export const provideMockService =
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   <T extends abstract new (...args: any) => any>(token: T) =>
-  (partial?: Partial<InstanceType<T>>) => ({
-    provide: token,
-    useFactory: () => createMock<InstanceType<T>>(partial || {}),
-  });
+    (partial?: Partial<InstanceType<T>>) => ({
+      provide: token,
+      useFactory: () => createMock<InstanceType<T>>(partial || {}),
+    });
 
 export const provideMockLogger = provideMockService(Logger);
 
