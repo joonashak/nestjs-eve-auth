@@ -3,7 +3,9 @@ import { EveAuthException } from "./eve-auth.exception";
 
 export const invalidRefreshTokenMessage = "Invalid refresh token.";
 
-/** @group Exceptions */
+/**
+ * @group Exceptions
+ */
 export class InvalidRefreshTokenException extends EveAuthException {
   constructor() {
     super(invalidRefreshTokenMessage, HttpStatus.UNAUTHORIZED);

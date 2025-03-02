@@ -4,11 +4,7 @@ const sidebar: SidebarConfigArray = [
   "/index.md",
   {
     text: "Usage",
-    children: [
-      "/usage/installation.md",
-      "/usage/configuration.md",
-      "/usage/example.md",
-    ],
+    children: ["/usage/installation.md", "/usage/configuration.md", "/usage/example.md"],
   },
   "/api/index.md",
   {

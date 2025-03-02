@@ -9,9 +9,7 @@ import { Config } from "./config.model";
 export class ConfigService {
   public readonly config: Config;
 
-  constructor(
-    @Inject(EVE_AUTH_MODULE_OPTIONS_TOKEN) options: EveAuthModuleOptions,
-  ) {
+  constructor(@Inject(EVE_AUTH_MODULE_OPTIONS_TOKEN) options: EveAuthModuleOptions) {
     this.config = new Config(options);
     // Running validation here ensures that execution is stopped immediately upon bad config.
     const errors = validateSync(this.config);

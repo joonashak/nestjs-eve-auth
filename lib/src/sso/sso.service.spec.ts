@@ -62,14 +62,12 @@ describe("SsoService", () => {
     });
 
     it("Throws for missing state", async () => {
-      const test = async () =>
-        ssoService.callback({ code: "asd", state: "" }, {});
+      const test = async () => ssoService.callback({ code: "asd", state: "" }, {});
       await expect(test()).rejects.toThrow(SsoStateMismatchException);
     });
 
     it("Throws for wrong state", async () => {
-      const test = async () =>
-        ssoService.callback({ code: "asd", state: state + "a" }, {});
+      const test = async () => ssoService.callback({ code: "asd", state: state + "a" }, {});
       await expect(test()).rejects.toThrow(SsoStateMismatchException);
     });
   });

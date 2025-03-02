@@ -24,8 +24,8 @@ Allow only users authenticated by `nestjs-eve-auth`.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type               |
+| :-------- | :----------------- |
 | `context` | `ExecutionContext` |
 
 #### Returns

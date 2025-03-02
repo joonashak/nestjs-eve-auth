@@ -1,6 +1,6 @@
-# Variable: OAUTH\_STRATEGY\_TOKEN
+# Variable: OAUTH_STRATEGY_TOKEN
 
-• `Const` **OAUTH\_STRATEGY\_TOKEN**: ``"eve-oauth"``
+• `Const` **OAUTH_STRATEGY_TOKEN**: `"eve-oauth"`
 
 #### Defined in
 

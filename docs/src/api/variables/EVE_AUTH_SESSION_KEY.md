@@ -1,6 +1,6 @@
-# Variable: EVE\_AUTH\_SESSION\_KEY
+# Variable: EVE_AUTH_SESSION_KEY
 
-• `Const` **EVE\_AUTH\_SESSION\_KEY**: ``"eveAuth"``
+• `Const` **EVE_AUTH_SESSION_KEY**: `"eveAuth"`
 
 #### Defined in
 

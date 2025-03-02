@@ -5,10 +5,7 @@ import { ConfigService } from "../config/config.service";
 import { OAUTH_STRATEGY_TOKEN } from "../constants";
 
 @Injectable()
-export class OAuthStrategy extends PassportStrategy(
-  Strategy,
-  OAUTH_STRATEGY_TOKEN,
-) {
+export class OAuthStrategy extends PassportStrategy(Strategy, OAUTH_STRATEGY_TOKEN) {
   constructor({ config }: ConfigService) {
     super({
       authorizationURL: config.authorizationUrl,

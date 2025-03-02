@@ -1,6 +1,8 @@
 import { IsNotEmpty } from "class-validator";
 
-/** @group Types */
+/**
+ * @group Types
+ */
 export class EveSsoCallbackParams {
   @IsNotEmpty()
   code: string;

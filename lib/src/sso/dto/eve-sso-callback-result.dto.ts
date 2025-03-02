@@ -1,6 +1,8 @@
 import { SsoTokens } from "./sso-tokens.dto";
 
-/** @group Types */
+/**
+ * @group Types
+ */
 export class EveSsoCallbackResult {
   character: {
     id: number;
