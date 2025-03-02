@@ -22,7 +22,6 @@ export class AppController {
 
   @RequireSsoAuth()
   @Get("sso/login")
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   async login() {}
 
   // @UsePipes(ValidationPipe)
@@ -30,6 +29,7 @@ export class AppController {
   @Get("sso/callback")
   async callback(
     @Query() callbackParams: EveSsoCallbackParams,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     @Session() session: Record<string, any>,
     @Res() response: Response,
   ) {
@@ -49,6 +49,7 @@ export class AppController {
   // }
 
   @Get("refresh")
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async refreshTokens(@Session() session: Record<string, any>) {
     await this.ssoService.refreshTokens(session.refreshToken);
   }
