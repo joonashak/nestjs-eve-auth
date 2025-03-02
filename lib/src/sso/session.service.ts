@@ -1,9 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "../config/config.service";
-import {
-  InvalidEsiIdException,
-  invalidEsiIdMessage,
-} from "../exceptions/invalid-esi-id.exception";
+import { InvalidEsiIdException, invalidEsiIdMessage } from "../exceptions/invalid-esi-id.exception";
 import {
   SessionStateNotFound,
   sessionStateNotFoundMessage,
@@ -20,9 +17,14 @@ import { SessionUtils } from "./session.utils";
  */
 @Injectable()
 export class SessionService {
-  constructor(private logger: Logger, private configService: ConfigService) {}
+  constructor(
+    private logger: Logger,
+    private configService: ConfigService,
+  ) {}
 
-  /** Get OAuth2 session state from `express-session` or throw if not found. */
+  /**
+   * Get OAuth2 session state from `express-session` or throw if not found.
+   */
   getStateOrFail(session: ExpressSession): string {
     const sessionState = session[this.getOAuthSessionKey()]?.state;
 
@@ -50,7 +52,9 @@ export class SessionService {
     return `oauth2:${host}`;
   }
 
-  /** Save user's ESI ID with `express-session`. */
+  /**
+   * Save user's ESI ID with `express-session`.
+   */
   setUserEsiId(session: ExpressSession, userEsiId: number): void {
     if (Number.isNaN(userEsiId)) {
       this.logger.error(invalidEsiIdMessage);

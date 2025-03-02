@@ -2,9 +2,8 @@
 
 Main module of `nestjs-eve-auth` library.
 
-Provides configuration to the library and exports its public API. You can
-import this simply in your application's root module or encapsulate it in
-another module.
+Provides configuration to the library and exports its public API. You can import this simply in your
+application's root module or encapsulate it in another module.
 
 ## Hierarchy
 
@@ -34,20 +33,20 @@ lib/node_modules/@nestjs/common/module-utils/interfaces/configurable-module-cls.
 
 ### forRoot
 
-▪ `Static` **forRoot**: (`options`: [`EveAuthModuleOptions`](../interfaces/EveAuthModuleOptions.md) & `Partial`\<{}\>) => `DynamicModule`
+▪ `Static` **forRoot**: (`options`: [`EveAuthModuleOptions`](../interfaces/EveAuthModuleOptions.md)
+& `Partial`\<{}\>) => `DynamicModule`
 
 #### Type declaration
 
 ▸ (`options`): `DynamicModule`
 
-Configure `nestjs-eve-auth` and return the module for
-  importing in a Nest.js module definition. See [configuration
-  docs](https://joonashak.github.io/nestjs-eve-auth/usage/configuration.html).
+Configure `nestjs-eve-auth` and return the module for importing in a Nest.js module definition. See
+[configuration docs](https://joonashak.github.io/nestjs-eve-auth/usage/configuration.html).
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name      | Type                                                                              |
+| :-------- | :-------------------------------------------------------------------------------- |
 | `options` | [`EveAuthModuleOptions`](../interfaces/EveAuthModuleOptions.md) & `Partial`\<{}\> |
 
 ##### Returns
@@ -58,25 +57,27 @@ Configure `nestjs-eve-auth` and return the module for
 
 ConfigurableEveAuthModule.forRoot
 
-___
+---
 
 ### forRootAsync
 
-▪ `Static` **forRootAsync**: (`options`: `ConfigurableModuleAsyncOptions`\<[`EveAuthModuleOptions`](../interfaces/EveAuthModuleOptions.md), ``"create"``\> & `Partial`\<{}\>) => `DynamicModule`
+▪ `Static` **forRootAsync**: (`options`:
+`ConfigurableModuleAsyncOptions`\<[`EveAuthModuleOptions`](../interfaces/EveAuthModuleOptions.md),
+`"create"`\> & `Partial`\<{}\>) => `DynamicModule`
 
 #### Type declaration
 
 ▸ (`options`): `DynamicModule`
 
-Configure `nestjs-eve-auth` asynchronously and return
-  the module for importing in a Nest.js module definition. See [configuration
-  docs](https://joonashak.github.io/nestjs-eve-auth/usage/configuration.html).
+Configure `nestjs-eve-auth` asynchronously and return the module for importing in a Nest.js module
+definition. See
+[configuration docs](https://joonashak.github.io/nestjs-eve-auth/usage/configuration.html).
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `options` | `ConfigurableModuleAsyncOptions`\<[`EveAuthModuleOptions`](../interfaces/EveAuthModuleOptions.md), ``"create"``\> & `Partial`\<{}\> |
+| Name      | Type                                                                                                                              |
+| :-------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| `options` | `ConfigurableModuleAsyncOptions`\<[`EveAuthModuleOptions`](../interfaces/EveAuthModuleOptions.md), `"create"`\> & `Partial`\<{}\> |
 
 ##### Returns
 

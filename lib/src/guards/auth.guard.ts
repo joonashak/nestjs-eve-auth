@@ -9,9 +9,7 @@ import { SessionUtils } from "../sso/session.utils";
  */
 @Injectable()
 export class AuthGuard implements CanActivate {
-  canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise<boolean> | Observable<boolean> {
+  canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
     const { session } = context.switchToHttp().getRequest();
     return !!SessionUtils.getUserEsiId(session);
   }

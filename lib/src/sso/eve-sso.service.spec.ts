@@ -1,13 +1,7 @@
 import { Test } from "@nestjs/testing";
 import axios from "axios";
-import {
-  InvalidAccessTokenException,
-  InvalidRefreshTokenException,
-} from "../exceptions";
-import {
-  defaultMockConfiguration,
-  provideMockConfigService,
-} from "../test-utils/mock-config";
+import { InvalidAccessTokenException, InvalidRefreshTokenException } from "../exceptions";
+import { defaultMockConfiguration, provideMockConfigService } from "../test-utils/mock-config";
 import { provideMockLogger } from "../test-utils/mock-services";
 import { EveSsoService } from "./eve-sso.service";
 
@@ -22,11 +16,7 @@ describe("EveSsoService", () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
-      providers: [
-        EveSsoService,
-        provideMockLogger(),
-        provideMockConfigService(),
-      ],
+      providers: [EveSsoService, provideMockLogger(), provideMockConfigService()],
     }).compile();
 
     eveSsoService = module.get(EveSsoService);
@@ -103,8 +93,7 @@ describe("EveSsoService", () => {
       const data = "asd";
       mockedAxios.get.mockResolvedValueOnce({ data });
 
-      const test = async () =>
-        eveSsoService.verifyAndDecodeSsoAccessToken(accessToken);
+      const test = async () => eveSsoService.verifyAndDecodeSsoAccessToken(accessToken);
       await expect(test()).resolves.toEqual(data);
 
       expect(axios.get).toBeCalledWith(

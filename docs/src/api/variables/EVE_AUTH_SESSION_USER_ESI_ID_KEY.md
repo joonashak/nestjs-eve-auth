@@ -1,6 +1,6 @@
-# Variable: EVE\_AUTH\_SESSION\_USER\_ESI\_ID\_KEY
+# Variable: EVE_AUTH_SESSION_USER_ESI_ID_KEY
 
-• `Const` **EVE\_AUTH\_SESSION\_USER\_ESI\_ID\_KEY**: ``"userEsiId"``
+• `Const` **EVE_AUTH_SESSION_USER_ESI_ID_KEY**: `"userEsiId"`
 
 #### Defined in
 

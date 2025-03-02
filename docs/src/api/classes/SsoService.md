@@ -4,14 +4,15 @@
 
 ### callback
 
-▸ **callback**(`«destructured»`, `session`): `Promise`\<[`EveSsoCallbackResult`](EveSsoCallbackResult.md)\>
+▸ **callback**(`«destructured»`, `session`):
+`Promise`\<[`EveSsoCallbackResult`](EveSsoCallbackResult.md)\>
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name             | Type                                              |
+| :--------------- | :------------------------------------------------ |
 | `«destructured»` | [`EveSsoCallbackParams`](EveSsoCallbackParams.md) |
-| `session` | `ExpressSession` |
+| `session`        | `ExpressSession`                                  |
 
 #### Returns
 
@@ -21,7 +22,7 @@
 
 [lib/src/sso/sso.service.ts:24](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/sso/sso.service.ts#L24)
 
-___
+---
 
 ### refreshTokens
 
@@ -33,8 +34,8 @@ Note that the refresh token may change as well.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name           | Type     |
+| :------------- | :------- |
 | `refreshToken` | `string` |
 
 #### Returns
@@ -45,7 +46,7 @@ Note that the refresh token may change as well.
 
 [lib/src/sso/sso.service.ts:69](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/sso/sso.service.ts#L69)
 
-___
+---
 
 ### revokeRefreshToken
 
@@ -53,13 +54,12 @@ ___
 
 Revoke SSO refresh token.
 
-Note that EVE SSO provides no information of whether or not the token was
-actually revoked.
+Note that EVE SSO provides no information of whether or not the token was actually revoked.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name           | Type     |
+| :------------- | :------- |
 | `refreshToken` | `string` |
 
 #### Returns

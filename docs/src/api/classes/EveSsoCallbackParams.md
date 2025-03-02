@@ -20,7 +20,7 @@
 
 [lib/src/sso/dto/eve-sso-callback-params.dto.ts:6](https://github.com/joonashak/nestjs-eve-auth/blob/2fa8073/lib/src/sso/dto/eve-sso-callback-params.dto.ts#L6)
 
-___
+---
 
 ### state
 

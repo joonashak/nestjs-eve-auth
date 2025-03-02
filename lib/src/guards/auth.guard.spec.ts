@@ -1,7 +1,4 @@
-import {
-  mockContextWithSession,
-  mockContextWithUserEsiId,
-} from "../test-utils/mock-context";
+import { mockContextWithSession, mockContextWithUserEsiId } from "../test-utils/mock-context";
 import { AuthGuard } from "./auth.guard";
 
 describe("TokenAuthGuard", () => {

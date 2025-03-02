@@ -1,8 +1,5 @@
 import { Test } from "@nestjs/testing";
-import {
-  EVE_AUTH_SESSION_KEY,
-  EVE_AUTH_SESSION_USER_ESI_ID_KEY,
-} from "../constants";
+import { EVE_AUTH_SESSION_KEY, EVE_AUTH_SESSION_USER_ESI_ID_KEY } from "../constants";
 import { SessionStateNotFound } from "../exceptions";
 import { provideMockConfigService } from "../test-utils/mock-config";
 import { provideMockLogger } from "../test-utils/mock-services";
@@ -14,11 +11,7 @@ describe("SessionService", () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
-      providers: [
-        SessionService,
-        provideMockLogger(),
-        provideMockConfigService(),
-      ],
+      providers: [SessionService, provideMockLogger(), provideMockConfigService()],
     }).compile();
 
     sessionService = module.get(SessionService);
@@ -26,9 +19,7 @@ describe("SessionService", () => {
 
   it("Returns correct state", () => {
     const state = "09efj0w84hf";
-    expect(sessionService.getStateOrFail(mockSessionState(state))).toEqual(
-      state,
-    );
+    expect(sessionService.getStateOrFail(mockSessionState(state))).toEqual(state);
   });
 
   it("Throws for undefined session", () => {
@@ -37,8 +28,7 @@ describe("SessionService", () => {
   });
 
   it("Throws for undefined state", () => {
-    const test = () =>
-      sessionService.getStateOrFail(mockSessionState(undefined));
+    const test = () => sessionService.getStateOrFail(mockSessionState(undefined));
     expect(test).toThrow(SessionStateNotFound);
   });
 

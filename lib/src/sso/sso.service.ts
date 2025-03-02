@@ -11,10 +11,14 @@ import { SsoTokens } from "./dto/sso-tokens.dto";
 import { EveSsoService } from "./eve-sso.service";
 import { SessionService } from "./session.service";
 
-/** @group Services */
+/**
+ * @group Services
+ */
 @Injectable()
 export class SsoService {
-  /** @internal */
+  /**
+   * @internal
+   */
   constructor(
     private logger: Logger,
     private sessionService: SessionService,
@@ -28,9 +32,7 @@ export class SsoService {
     const sessionState = this.sessionService.getStateOrFail(session);
     this.verifyState(state, sessionState);
     const tokens = await this.eveSsoService.getTokens(code);
-    const loginData = await this.eveSsoService.verifyAndDecodeSsoAccessToken(
-      tokens.accessToken,
-    );
+    const loginData = await this.eveSsoService.verifyAndDecodeSsoAccessToken(tokens.accessToken);
 
     this.sessionService.setUserEsiId(session, loginData.CharacterID);
 

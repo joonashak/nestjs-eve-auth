@@ -1,8 +1,14 @@
-/** @group Types */
+/**
+ * @group Types
+ */
 export interface EveAuthModuleOptions {
-  /** Your app's EVE SSO Client ID. */
+  /**
+   * Your app's EVE SSO Client ID.
+   */
   clientId: string;
-  /** Your app's EVE SSO Secret Key. */
+  /**
+   * Your app's EVE SSO Secret Key.
+   */
   secretKey: string;
   /**
    * Your app's EVE SSO Callback URL.
@@ -13,7 +19,9 @@ export interface EveAuthModuleOptions {
    * could be `http://localhost:3000/sso/callback`.
    */
   callbackUrl: string;
-  /** Permission scopes to request in SSO. */
+  /**
+   * Permission scopes to request in SSO.
+   */
   scopes?: string[];
   /**
    * EVE SSO Authorization URL.

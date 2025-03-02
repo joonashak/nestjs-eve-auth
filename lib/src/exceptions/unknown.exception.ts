@@ -1,7 +1,9 @@
 import { HttpStatus } from "@nestjs/common";
 import { EveAuthException } from "./eve-auth.exception";
 
-/** @group Exceptions */
+/**
+ * @group Exceptions
+ */
 export class UnknownException extends EveAuthException {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(error?: any) {

@@ -1,9 +1,6 @@
 import { createMock } from "@golevelup/ts-jest";
 import { ExecutionContext } from "@nestjs/common";
-import {
-  EVE_AUTH_SESSION_KEY,
-  EVE_AUTH_SESSION_USER_ESI_ID_KEY,
-} from "../constants";
+import { EVE_AUTH_SESSION_KEY, EVE_AUTH_SESSION_USER_ESI_ID_KEY } from "../constants";
 
 export const mockContextWithRequest = (req: object): ExecutionContext => {
   const context = createMock<ExecutionContext>({

@@ -2,8 +2,8 @@
 
 Library's top-level exception that other custom exceptions should extend.
 
-Currently extends Nest's `HttpException` but this could change as it might not be
-appropriate considering GraphQL support.
+Currently extends Nest's `HttpException` but this could change as it might not be appropriate
+considering GraphQL support.
 
 ## Hierarchy
 
@@ -27,17 +27,18 @@ appropriate considering GraphQL support.
 
 ### constructor
 
-• **new EveAuthException**(`response`, `status`, `options?`): [`EveAuthException`](EveAuthException.md)
+• **new EveAuthException**(`response`, `status`, `options?`):
+[`EveAuthException`](EveAuthException.md)
 
 Instantiate a plain HTTP Exception.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| Name       | Type                                    | Description                                                       |
+| :--------- | :-------------------------------------- | :---------------------------------------------------------------- |
 | `response` | `string` \| `Record`\<`string`, `any`\> | string, object describing the error condition or the error cause. |
-| `status` | `number` | HTTP response status code. |
-| `options?` | `HttpExceptionOptions` | An object used to add an error cause. |
+| `status`   | `number`                                | HTTP response status code.                                        |
+| `options?` | `HttpExceptionOptions`                  | An object used to add an error cause.                             |
 
 #### Returns
 
@@ -46,32 +47,36 @@ Instantiate a plain HTTP Exception.
 **`Example`**
 
 ```ts
-throw new HttpException()
-throw new HttpException('message', HttpStatus.BAD_REQUEST)
-throw new HttpException('custom message', HttpStatus.BAD_REQUEST, {
- cause: new Error('Cause Error'),
-})
+throw new HttpException();
+throw new HttpException("message", HttpStatus.BAD_REQUEST);
+throw new HttpException("custom message", HttpStatus.BAD_REQUEST, {
+  cause: new Error("Cause Error"),
+});
 ```
 
 **`Usage Notes`**
 
 The constructor arguments define the response and the HTTP response status code.
+
 - The `response` argument (required) defines the JSON response body. alternatively, it can also be
- an error object that is used to define an error [cause](https://nodejs.org/en/blog/release/v16.9.0/#error-cause).
+  an error object that is used to define an error
+  [cause](https://nodejs.org/en/blog/release/v16.9.0/#error-cause).
 - The `status` argument (required) defines the HTTP Status Code.
-- The `options` argument (optional) defines additional error options. Currently, it supports the `cause` attribute,
- and can be used as an alternative way to specify the error cause: `const error = new HttpException('description', 400, { cause: new Error() });`
+- The `options` argument (optional) defines additional error options. Currently, it supports the
+  `cause` attribute, and can be used as an alternative way to specify the error cause:
+  `const error = new HttpException('description', 400, { cause: new Error() });`
 
 By default, the JSON response body contains two properties:
+
 - `statusCode`: the Http Status Code.
-- `message`: a short description of the HTTP error by default; override this
-by supplying a string in the `response` parameter.
+- `message`: a short description of the HTTP error by default; override this by supplying a string
+  in the `response` parameter.
 
-To override the entire JSON response body, pass an object to the `createBody`
-method. Nest will serialize the object and return it as the JSON response body.
+To override the entire JSON response body, pass an object to the `createBody` method. Nest will
+serialize the object and return it as the JSON response body.
 
-The `status` argument is required, and should be a valid HTTP status code.
-Best practice is to use the `HttpStatus` enum imported from `nestjs/common`.
+The `status` argument is required, and should be a valid HTTP status code. Best practice is to use
+the `HttpStatus` enum imported from `nestjs/common`.
 
 #### Inherited from
 
@@ -99,7 +104,7 @@ HttpException.getResponse
 
 lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:68
 
-___
+---
 
 ### getStatus
 
@@ -117,7 +122,7 @@ HttpException.getStatus
 
 lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:69
 
-___
+---
 
 ### initCause
 
@@ -131,8 +136,8 @@ Configures error chaining support
 
 **`See`**
 
- - https://nodejs.org/en/blog/release/v16.9.0/#error-cause
- - https://github.com/microsoft/TypeScript/issues/45167
+- https://nodejs.org/en/blog/release/v16.9.0/#error-cause
+- https://github.com/microsoft/TypeScript/issues/45167
 
 #### Inherited from
 
@@ -142,7 +147,7 @@ HttpException.initCause
 
 lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:65
 
-___
+---
 
 ### initMessage
 
@@ -160,7 +165,7 @@ HttpException.initMessage
 
 lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:66
 
-___
+---
 
 ### initName
 
@@ -178,7 +183,7 @@ HttpException.initName
 
 lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:67
 
-___
+---
 
 ### captureStackTrace
 
@@ -188,9 +193,9 @@ Create .stack property on a target object
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `targetObject` | `object` |
+| Name              | Type       |
+| :---------------- | :--------- |
+| `targetObject`    | `object`   |
 | `constructorOpt?` | `Function` |
 
 #### Returns
@@ -205,7 +210,7 @@ HttpException.captureStackTrace
 
 lib/node_modules/@types/node/globals.d.ts:4
 
-___
+---
 
 ### createBody
 
@@ -213,11 +218,11 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `nil` | ``""`` |
-| `message` | `HttpExceptionBodyMessage` |
-| `statusCode` | `number` |
+| Name         | Type                       |
+| :----------- | :------------------------- |
+| `nil`        | `""`                       |
+| `message`    | `HttpExceptionBodyMessage` |
+| `statusCode` | `number`                   |
 
 #### Returns
 
@@ -235,11 +240,11 @@ lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:70
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `message` | `HttpExceptionBodyMessage` |
-| `error` | `string` |
-| `statusCode` | `number` |
+| Name         | Type                       |
+| :----------- | :------------------------- |
+| `message`    | `HttpExceptionBodyMessage` |
+| `error`      | `string`                   |
+| `statusCode` | `number`                   |
 
 #### Returns
 
@@ -257,14 +262,14 @@ lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:71
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name   | Type                                    |
+| :----- | :-------------------------------------- |
 | `Body` | extends `Record`\<`string`, `unknown`\> |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name     | Type   |
+| :------- | :----- |
 | `custom` | `Body` |
 
 #### Returns
@@ -279,19 +284,19 @@ HttpException.createBody
 
 lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:72
 
-___
+---
 
 ### extractDescriptionAndOptionsFrom
 
 ▸ **extractDescriptionAndOptionsFrom**(`descriptionOrOptions`): `DescriptionAndOptions`
 
-Utility method used to extract the error description and httpExceptionOptions from the given argument.
-This is used by inheriting classes to correctly parse both options.
+Utility method used to extract the error description and httpExceptionOptions from the given
+argument. This is used by inheriting classes to correctly parse both options.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name                   | Type                               |
+| :--------------------- | :--------------------------------- |
 | `descriptionOrOptions` | `string` \| `HttpExceptionOptions` |
 
 #### Returns
@@ -308,7 +313,7 @@ HttpException.extractDescriptionAndOptionsFrom
 
 lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:80
 
-___
+---
 
 ### getDescriptionFrom
 
@@ -316,8 +321,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name                   | Type                               |
+| :--------------------- | :--------------------------------- |
 | `descriptionOrOptions` | `string` \| `HttpExceptionOptions` |
 
 #### Returns
@@ -332,7 +337,7 @@ HttpException.getDescriptionFrom
 
 lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:73
 
-___
+---
 
 ### getHttpExceptionOptionsFrom
 
@@ -340,8 +345,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name                   | Type                               |
+| :--------------------- | :--------------------------------- |
 | `descriptionOrOptions` | `string` \| `HttpExceptionOptions` |
 
 #### Returns
@@ -370,7 +375,7 @@ HttpException.cause
 
 lib/node_modules/@nestjs/common/exceptions/http.exception.d.ts:58
 
-___
+---
 
 ### message
 
@@ -384,7 +389,7 @@ HttpException.message
 
 docs/node_modules/typescript/lib/lib.es5.d.ts:1068
 
-___
+---
 
 ### name
 
@@ -398,7 +403,7 @@ HttpException.name
 
 docs/node_modules/typescript/lib/lib.es5.d.ts:1067
 
-___
+---
 
 ### stack
 
@@ -412,7 +417,7 @@ HttpException.stack
 
 docs/node_modules/typescript/lib/lib.es5.d.ts:1069
 
-___
+---
 
 ### prepareStackTrace
 
@@ -426,9 +431,9 @@ Optional override for formatting stack traces
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `err` | `Error` |
+| Name          | Type         |
+| :------------ | :----------- |
+| `err`         | `Error`      |
 | `stackTraces` | `CallSite`[] |
 
 ##### Returns
@@ -447,7 +452,7 @@ HttpException.prepareStackTrace
 
 lib/node_modules/@types/node/globals.d.ts:11
 
-___
+---
 
 ### stackTraceLimit
 
