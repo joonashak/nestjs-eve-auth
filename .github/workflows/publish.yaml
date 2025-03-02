@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "18.17.0"
+          node-version: 22.14.0
           registry-url: https://registry.npmjs.org/
       - name: Copy root README.md to library
         run: cp README.md lib/README.md
