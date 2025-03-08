@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { get } from "lodash";
 import { ConfigService } from "../config/config.service";
 import { InvalidEsiIdException, invalidEsiIdMessage } from "../exceptions/invalid-esi-id.exception";
 import {
@@ -48,7 +49,7 @@ export class SessionService {
       /^(?:https{0,1}:\/\/)(?<host>[\w\d.-]*)/,
     );
 
-    const host = match.groups.host || "login.eveonline.com";
+    const host = get(match, "groups.host", "login.eveonline.com");
     return `oauth2:${host}`;
   }
 

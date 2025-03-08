@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import axios, { AxiosResponse } from "axios";
 import * as FormData from "form-data";
+import { get } from "lodash";
 import { ConfigService } from "../config/config.service";
 import {
   InvalidAccessTokenException,
@@ -62,7 +63,7 @@ export class EveSsoService {
         refreshToken: data.refresh_token,
       };
     } catch (error) {
-      if (error.response.status === 400) {
+      if (get(error, "response.status") === 400) {
         this.logger.verbose(invalidRefreshTokenMessage);
         throw new InvalidRefreshTokenException();
       }

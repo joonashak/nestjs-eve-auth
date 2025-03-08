@@ -10,7 +10,8 @@
     "postversion": "git push && git push --tags",
     "docs": "cd docs && npm start",
     "generate": "cd docs && npm run generate",
-    "check-formatting": "prettier --check ."
+    "check-formatting": "prettier --check .",
+    "test": "cd lib && npm test"
   },
   "author": "Joonas Häkkinen <joonashak@proton.me>",
   "license": "GPL-3.0-only",
