@@ -5,6 +5,7 @@
   "scripts": {
     "start": "docker compose up -d && cd lib && npm run build && cd ../dev && npm run start:dev",
     "stop": "docker compose down",
+    "postinstall": "cd dev && npm ci && cd ../docs && npm ci && cd ../lib && npm ci",
     "lint": "eslint . --max-warnings 0",
     "version": "scripts/version_sub_projects.sh $npm_package_version",
     "postversion": "git push && git push --tags",
